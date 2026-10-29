@@ -8,6 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- NOTE: Ad scripts are NOT in <head> anymore. They load AFTER the page is ready
+     (see "ADS LOADER" at the bottom) so they cannot block or steal button taps. -->
+
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
@@ -63,6 +67,11 @@
 
   html, body { height: 100%; }
 
+  /* FIX: remove 300ms tap delay / double-tap-zoom wait on every control */
+  button, a, input, select, textarea, label, .seg-btn, .btn, .dropzone, .check-row {
+    touch-action: manipulation;
+  }
+
   body {
     font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     background: var(--surface-3);
@@ -105,6 +114,33 @@
     padding: calc(var(--safe-top) + 0px) calc(14px + var(--safe-right)) calc(var(--safe-bottom) + 24px) calc(14px + var(--safe-left));
     display: flex;
     flex-direction: column;
+  }
+
+  /* Ads Container Styles */
+  .ad-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0;
+    overflow: hidden;
+    background: var(--surface-2);
+    border-radius: var(--r-md);
+    border: 1px dashed var(--line);
+    min-height: 50px;
+    contain: layout paint;
+  }
+  .ad-container iframe { max-width: 100%; border: none; display: block; }
+  .ad-container[data-h="50"]  { min-height: 50px; }
+  .ad-container[data-h="90"]  { min-height: 90px; }
+  .ad-container[data-h="250"] { min-height: 250px; }
+
+  /* Desktop Only Ads */
+  .desktop-only-ad { display: none; }
+  @media (min-width: 768px) {
+    .desktop-only-ad { display: flex; }
+    .mobile-only-ad { display: none !important; }
   }
 
   .topbar {
@@ -215,7 +251,7 @@
     color: var(--wa-teal);
     box-shadow: var(--shadow-xs);
   }
-  .seg-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .seg-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
 
   textarea, input[type="text"], input[type="search"], select {
     width: 100%;
@@ -255,8 +291,11 @@
     appearance: none;
     min-height: 46px;
     line-height: 1;
+    position: relative;
+    z-index: 2;
   }
-  .btn svg { width: 16px; height: 16px; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .btn svg { width: 16px; height: 16px; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+  .btn span { pointer-events: none; }
   .btn:active:not(:disabled) { transform: scale(.965); }
   .btn:disabled { opacity: .45; cursor: not-allowed; }
 
@@ -299,7 +338,7 @@
     transition: all .22s ease;
   }
   .dropzone.is-over { border-color: var(--wa-green); background: #f0fdf5; transform: scale(1.01); }
-  .dropzone svg { width: 30px; height: 30px; stroke: var(--wa-teal); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .dropzone svg { width: 30px; height: 30px; stroke: var(--wa-teal); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
   .dz-title { font-size: 13.5px; font-weight: 700; color: var(--ink-800); margin-top: 8px; }
   .dz-sub { font-size: 12px; color: var(--ink-400); margin-top: 2px; }
   .dz-file {
@@ -634,6 +673,37 @@
       transition-duration: 0.001ms !important;
     }
   }
+
+  /* ====== LIGHTWEIGHT MODE (same as your smooth ad-free version) ======
+     Heavy always-running animations / big shadows removed so the phone
+     has free power to handle ads + taps together. Nothing is deleted. */
+  body { touch-action: manipulation; }
+
+  @keyframes riseIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .anim-rise { animation: riseIn .3s ease-out both; }
+  .anim-pop  { animation: none; }
+  .pulse     { animation: none; }
+  .hero-eyebrow .dot { animation: none; }
+  .row-item  { animation: none; }
+  .hero::after { display: none; }
+
+  .brand-mark { box-shadow: 0 4px 10px rgba(7,94,84,0.2); }
+  .step-chip { transition: all .2s ease; }
+  .step-chip.is-active { box-shadow: none; transform: none; }
+  .seg-btn { transition: all .15s ease; }
+  textarea, input[type="text"], input[type="search"], select { transition: border-color .15s ease; }
+  textarea:focus, input:focus, select:focus { box-shadow: 0 0 0 3px rgba(37,211,102,0.1); }
+  .btn { transition: transform .1s ease, opacity .15s ease; }
+  .btn:active:not(:disabled) { transform: scale(.97); }
+  .btn-primary { box-shadow: 0 4px 12px rgba(18,140,126,0.2); }
+  .btn-teal { box-shadow: 0 4px 12px rgba(7,94,84,0.25); }
+  .dropzone { transition: all .15s ease; }
+  .dropzone.is-over { transform: none; }
+  .prog-fill { transition: width .3s ease; box-shadow: none; }
+  .check-row { transition: all .15s ease; }
+  .toast-wrap { transition: transform .3s ease; }
+  .modal-bg { transition: opacity .2s ease; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  .modal-sheet { transition: transform .25s ease; }
 </style>
 </head>
 <body>
@@ -672,6 +742,12 @@
       <div class="step-chip" data-step="3"><span>3</span></div>
     </div>
   </header>
+
+  <!-- ================= TOP BANNER AD (320x50 Mobile) — loaded later by ADS LOADER ================= -->
+  <div class="ad-container mobile-only-ad" data-ad-key="481ecd0d09e55ec7908556d1423d10ac" data-w="320" data-h="50"></div>
+
+  <!-- ================= TOP BANNER AD (728x90 Desktop) — loaded later by ADS LOADER ================= -->
+  <div class="ad-container desktop-only-ad" data-ad-key="b1e9b468ebf96981785a597bc20ad315" data-w="728" data-h="90"></div>
 
   <!-- PAGE 1 -->
   <main id="page1" class="anim-rise">
@@ -774,6 +850,9 @@
         </div>
       </div>
 
+      <!-- ================= IN-CONTENT AD 300x250 (Message Box ke baad) — loaded later by ADS LOADER ================= -->
+      <div class="ad-container" style="margin-top: 16px;" data-ad-key="8105531df50c4c704e02bcd7a69a2245" data-w="300" data-h="250"></div>
+
       <div class="stat-grid mt-16">
         <div class="stat"><div class="stat-v" id="statTotal">0</div><div class="stat-l">Total</div></div>
         <div class="stat is-teal"><div class="stat-v" id="statValid">0</div><div class="stat-l">Valid</div></div>
@@ -857,13 +936,11 @@
         </div>
       </div>
 
-      <!-- MAIN ACTION BUTTON -->
       <button class="btn btn-teal btn-block btn-lg mt-12 pulse" id="mainActionBtn">
         <svg viewBox="0 0 24 24" id="mainActionIcon"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
         <span id="mainActionLabel">Open WhatsApp Chat</span>
       </button>
 
-      <!-- INLINE MARKING ROW (only appears after chat opened, in-place) -->
       <div id="markRow" class="hide mt-12 anim-pop">
         <div class="notice notice-info">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
@@ -885,7 +962,6 @@
         </button>
       </div>
 
-      <!-- CAMPAIGN DONE -->
       <div id="campaignDone" class="hide mt-12 anim-pop">
         <div class="notice notice-success" style="flex-direction:column;align-items:flex-start;gap:6px;">
           <div style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px;">
@@ -894,6 +970,12 @@
           </div>
           <div style="font-size:12.5px;">All contacts have been processed. Great job! 🎉</div>
         </div>
+
+        <!-- ================= SMARTLINK (Support Us) ================= -->
+        <a href="https://araplhn.org/4/a905b1525e6a01fd95637f62cffff93f" target="_blank" rel="noopener" class="btn btn-teal btn-block mt-12" style="text-decoration: none;">
+          ❤️ Support Us (Visit Sponsor)
+        </a>
+
         <button class="btn btn-primary btn-block mt-12" id="resetAllBtn">
           <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
           Start New Campaign
@@ -1209,14 +1291,12 @@
     const markRow = $('markRow');
     const doneBlock = $('campaignDone');
 
-    // Reset states
     markRow.classList.add('hide');
     doneBlock.classList.add('hide');
     mainBtn.disabled = false;
     mainBtn.classList.add('pulse');
     mainBtn.style.opacity = '1';
 
-    /* ---- CAMPAIGN COMPLETE ---- */
     if (!next && !openedContact) {
       $('heroEyebrow').textContent = 'Campaign Complete';
       $('heroNum').textContent = '🎉';
@@ -1228,11 +1308,11 @@
       mainBtn.classList.remove('pulse');
       mainBtn.style.opacity = '.4';
       doneBlock.classList.remove('hide');
+      if (window.__loadPopunder) setTimeout(window.__loadPopunder, 1500);
       renderFullList();
       return;
     }
 
-    /* ---- AWAITING MARK: chat already opened, stays on same button area ---- */
     if (openedContact) {
       const idx = q.findIndex(c => c.id === openedContact.id);
       $('heroEyebrow').textContent = 'Chat Opened — Mark Result';
@@ -1242,17 +1322,14 @@
       $('heroCount').textContent = (idx + 1) + ' of ' + q.length;
       $('currentRecipient').textContent = openedContact.normalized;
 
-      // Change main button to reflect "waiting" state (disabled)
       mainBtn.disabled = true;
       mainBtn.classList.remove('pulse');
       mainBtn.style.opacity = '.55';
       $('mainActionLabel').textContent = 'Chat Opened — Mark Result Below';
       $('mainActionIcon').innerHTML = '<path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>';
 
-      // Show inline mark row
       markRow.classList.remove('hide');
     }
-    /* ---- NEXT RECIPIENT READY ---- */
     else if (next) {
       const idx = q.findIndex(c => c.id === next.id);
       $('heroEyebrow').textContent = 'Next Recipient';
@@ -1279,9 +1356,7 @@
     `).join('');
   }
 
-  /* ---- MAIN ACTION BUTTON: single smart button ---- */
   $('mainActionBtn').addEventListener('click', () => {
-    // If we have an opened contact awaiting mark, do nothing (button disabled anyway)
     if (S.openContactId) {
       toast('Please mark the current result first', 'warn');
       return;
@@ -1293,19 +1368,14 @@
     const encoded = encodeURIComponent(S.message);
     const url = `https://wa.me/${phone}?text=${encoded}`;
 
-    // Mark as chat_opened (NOT sent)
     next.status = 'chat_opened';
     S.openContactId = next.id;
 
-    // Open WhatsApp
     window.open(url, '_blank');
-
-    // Immediately re-render — stays on page 3, same button area, shows mark row
     renderSendPage();
     toast('WhatsApp opened. Send the message, then mark below.', 'success');
   });
 
-  /* ---- MARK RESULT BUTTONS: advance to next contact in-place ---- */
   $('markSentBtn').addEventListener('click', () => {
     const c = S.contacts.find(x => x.id === S.openContactId);
     if (!c) return;
@@ -1381,5 +1451,118 @@
 
 })();
 </script>
+
+<!-- ================================================================= -->
+<!-- ====================== ADS LOADER (FIX) ========================= -->
+<!-- Ads load AFTER the page is fully ready, one by one, so buttons    -->
+<!-- always respond on the very first tap.                             -->
+<!--  • Banners run inside their own iframe (no conflict, no blocking) -->
+<!--  • Only the banner that matches the screen size is loaded         -->
+<!--  • Popunder / Social Bar scripts load async and later             -->
+<!-- ================================================================= -->
+<script>
+(function () {
+  'use strict';
+
+  /* Agar kabhi popunder se buttons phir se slow lagein, to ise false kar do */
+  /* ===== CLICK-AD SYSTEM: har button tap par ad naye tab mein khulta hai ===== */
+  var CLICK_AD_ENABLED  = true;   // false karo to click-ads band
+  var CLICK_AD_URL      = 'https://araplhn.org/4/a905b1525e6a01fd95637f62cffff93f';
+  var CLICK_AD_GAP_MS   = 1200;   // double-tap par 2 tab na khule (0 = har tap par)
+  var CLICK_AD_SKIP_IDS = { mainActionBtn: 1 }; // yeh button WhatsApp khol raha hai, dusra tab block ho jata
+  var lastClickAd = 0;
+
+  document.addEventListener('click', function (e) {
+    if (!CLICK_AD_ENABLED) return;
+    var el = e.target.closest ? e.target.closest('button, .btn, .seg-btn') : null;
+    if (!el || el.disabled) return;
+    if (el.tagName === 'A' && el.getAttribute('href')) return;   // Support Us link khud khulta hai
+    if (CLICK_AD_SKIP_IDS[el.id]) return;
+    var now = Date.now();
+    if (now - lastClickAd < CLICK_AD_GAP_MS) return;
+    lastClickAd = now;
+    try { window.open(CLICK_AD_URL, '_blank'); } catch (err) {}
+  }, true);
+
+  /* Purana popunder script ab band hai kyunki click-ad system wahi kaam pehle tap par karta hai
+     (dono saath chalte to ek click par 2 tab khulte). Chaho to true kar do. */
+  var ENABLE_POPUNDER   = false;
+  var ENABLE_SOCIALBAR  = true;
+  var ENABLE_BANNERS    = true;
+
+  var POPUNDER_SRC  = 'https://abscloud.org/1/2fce20027d8278de994b7e87c53ac315';
+  var SOCIALBAR_SRC = 'https://bauval.org/14/339fa7fc0d916e3b64382d9c6df1b46a';
+
+  function idle(fn, timeout) {
+    if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: timeout || 3000 });
+    else setTimeout(fn, 300);
+  }
+
+  function addScript(src) {
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = true;
+    s.setAttribute('data-cfasync', 'false');
+    s.onerror = function () { /* ad blocked / failed — ignore silently */ };
+    document.body.appendChild(s);
+  }
+
+  function mountBanner(box) {
+    if (box.dataset.loaded) return;
+    // skip hidden containers (e.g. desktop banner on mobile)
+    if (box.offsetParent === null && getComputedStyle(box).display === 'none') return;
+    box.dataset.loaded = '1';
+
+    var key = box.dataset.adKey;
+    var w = parseInt(box.dataset.w, 10);
+    var h = parseInt(box.dataset.h, 10);
+
+    var f = document.createElement('iframe');
+    f.width = w;
+    f.height = h;
+    f.scrolling = 'no';
+    f.setAttribute('frameborder', '0');
+    f.setAttribute('title', 'Advertisement');
+    f.loading = 'lazy';
+    f.style.cssText = 'border:0;width:' + w + 'px;height:' + h + 'px;max-width:100%;display:block;';
+    f.srcdoc =
+      '<!DOCTYPE html><html><head><meta charset="utf-8"><base target="_blank">' +
+      '<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body>' +
+      '<scr' + 'ipt>atOptions={"key":"' + key + '","format":"iframe","height":' + h + ',"width":' + w + ',"params":{}};</scr' + 'ipt>' +
+      '<scr' + 'ipt src="https://bauval.org/22/' + key + '"></scr' + 'ipt>' +
+      '</body></html>';
+    box.appendChild(f);
+  }
+
+  function loadAds() {
+    // 1) Banners — one at a time, spaced out, so the main thread stays free
+    if (ENABLE_BANNERS) {
+      var boxes = Array.prototype.slice.call(document.querySelectorAll('.ad-container[data-ad-key]'));
+      boxes.forEach(function (box, i) {
+        setTimeout(function () { idle(function () { mountBanner(box); }); }, 400 + i * 600);
+      });
+    }
+
+    // 2) Social bar — later
+    if (ENABLE_SOCIALBAR) {
+      setTimeout(function () { idle(function () { addScript(SOCIALBAR_SRC); }); }, 3000);
+    }
+
+    // 3) Popunder — NOT loaded now. It grabs taps, so it only loads
+    //    when the campaign is finished (see window.__loadPopunder below).
+  }
+
+  var popLoaded = false;
+  window.__loadPopunder = function () {
+    if (!ENABLE_POPUNDER || popLoaded) return;
+    popLoaded = true;
+    addScript(POPUNDER_SRC);
+  };
+
+  if (document.readyState === 'complete') setTimeout(loadAds, 800);
+  else window.addEventListener('load', function () { setTimeout(loadAds, 800); });
+})();
+</script>
+
 </body>
 </html>
