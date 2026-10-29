@@ -704,9 +704,34 @@
   .toast-wrap { transition: transform .3s ease; }
   .modal-bg { transition: opacity .2s ease; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
   .modal-sheet { transition: transform .25s ease; }
+
+  /* ===== Skip-Ad bar ===== */
+  .ad-snack {
+    position: fixed; left: 50%; bottom: calc(var(--safe-bottom) + 84px);
+    transform: translateX(-50%) translateY(150%);
+    z-index: 2147483000;
+    display: flex; align-items: center; gap: 12px;
+    background: var(--ink-900); color: #fff;
+    padding: 10px 10px 10px 16px;
+    border-radius: var(--r-pill);
+    font-size: 13px; font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    width: max-content; max-width: calc(100% - 28px);
+    transition: transform .25s ease;
+  }
+  .ad-snack.is-show { transform: translateX(-50%) translateY(0); }
+  .ad-snack button {
+    border: none; cursor: pointer; font-family: inherit;
+    background: #fff; color: var(--wa-teal);
+    font-weight: 800; font-size: 12.5px;
+    padding: 9px 16px; border-radius: var(--r-pill);
+    min-height: 36px;
+  }
 </style>
 </head>
 <body>
+
+<div class="ad-snack" id="adSnack"><span>🎁 Sponsor page <b id="adSnackCount">2</b>s mein khulega</span><button type="button" id="adSkipBtn">Skip Ad</button></div>
 
 <div class="toast-wrap" id="toastWrap">
   <div class="toast" id="toast">
@@ -751,6 +776,9 @@
 
   <!-- PAGE 1 -->
   <main id="page1" class="anim-rise">
+    <!-- ADS PAGE 1 TOP -->
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="867e7cfd165ab9e80d0545ddaa9c5e55" data-w="468" data-h="60" data-min-vw="520"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:250px;" data-ad-key="8105531df50c4c704e02bcd7a69a2245" data-w="300" data-h="250"></div>
     <section class="card">
       <div class="card-head">
         <div class="card-ico">
@@ -814,10 +842,19 @@
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
       <span>Numbers are validated and normalized. Local Pakistani numbers like <strong>03125763588</strong> become <strong>+923125763588</strong>. Duplicates are removed automatically.</span>
     </div>
+
+    <!-- ADS PAGE 1 -->
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="27776636f2a3a50672cc1cf837861260" data-type="container" data-w="320" data-h="60"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="867e7cfd165ab9e80d0545ddaa9c5e55" data-w="468" data-h="60" data-min-vw="520"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:300px;" data-ad-key="b32153d489e89b591993d8d84fee1cdc" data-w="160" data-h="300"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:600px;" data-ad-key="d5141563945fef5d54c210d0fd076ca3" data-w="160" data-h="600" data-min-vw="768"></div>
   </main>
 
   <!-- PAGE 2 -->
   <main id="page2" class="hide anim-rise">
+    <!-- ADS PAGE 2 TOP -->
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="867e7cfd165ab9e80d0545ddaa9c5e55" data-w="468" data-h="60" data-min-vw="520"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="27776636f2a3a50672cc1cf837861260" data-type="container" data-w="320" data-h="60"></div>
     <section class="card">
       <div class="card-head">
         <div class="card-ico">
@@ -881,10 +918,18 @@
         </button>
       </div>
     </section>
+
+    <!-- ADS PAGE 2 -->
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="867e7cfd165ab9e80d0545ddaa9c5e55" data-w="468" data-h="60" data-min-vw="520"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:300px;" data-ad-key="b32153d489e89b591993d8d84fee1cdc" data-w="160" data-h="300"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="27776636f2a3a50672cc1cf837861260" data-type="container" data-w="320" data-h="60"></div>
   </main>
 
   <!-- PAGE 3 -->
   <main id="page3" class="hide anim-rise">
+    <!-- ADS PAGE 3 TOP -->
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="867e7cfd165ab9e80d0545ddaa9c5e55" data-w="468" data-h="60" data-min-vw="520"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="27776636f2a3a50672cc1cf837861260" data-type="container" data-w="320" data-h="60"></div>
 
     <!-- Hero queue -->
     <div class="hero" id="heroQueue">
@@ -983,6 +1028,10 @@
       </div>
     </section>
 
+    <!-- ADS PAGE 3 MIDDLE -->
+    <div class="ad-container" style="margin-top:12px;min-height:250px;" data-ad-key="8105531df50c4c704e02bcd7a69a2245" data-w="300" data-h="250"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:300px;" data-ad-key="b32153d489e89b591993d8d84fee1cdc" data-w="160" data-h="300"></div>
+
     <!-- Full list -->
     <section class="card">
       <div class="row between mb-2" style="margin-bottom:10px;">
@@ -991,6 +1040,12 @@
       </div>
       <div class="scroll-box" id="fullContactList"></div>
     </section>
+
+    <!-- ADS PAGE 3 -->
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="27776636f2a3a50672cc1cf837861260" data-type="container" data-w="320" data-h="60"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="867e7cfd165ab9e80d0545ddaa9c5e55" data-w="468" data-h="60" data-min-vw="520"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:300px;" data-ad-key="b32153d489e89b591993d8d84fee1cdc" data-w="160" data-h="300"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:600px;" data-ad-key="d5141563945fef5d54c210d0fd076ca3" data-w="160" data-h="600" data-min-vw="768"></div>
 
     <div class="notice notice-warn">
       <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -1464,29 +1519,81 @@
 (function () {
   'use strict';
 
-  /* Agar kabhi popunder se buttons phir se slow lagein, to ise false kar do */
-  /* ===== CLICK-AD SYSTEM: har button tap par ad naye tab mein khulta hai ===== */
-  var CLICK_AD_ENABLED  = true;   // false karo to click-ads band
+  /* ================= CLICK-AD SYSTEM (final) =================
+     Rules:
+     1) Kisi button par tap -> 1.5 sec ka "Skip Ad" bar aata hai, phir sponsor page naye tab mein khulta hai.
+     2) User "Skip Ad" dabaye to us baar ad nahi khulta.
+     3) Same button baar baar dabane par ad dobara NAHI khulta.
+        Jab user koi DUSRA button dabata hai, tab ad phir se khulta hai.
+     4) Open WhatsApp button par ad nahi (wo khud naya tab kholta hai), lekin wo "dusra button" ginta hai.
+  ============================================================ */
+  var CLICK_AD_ENABLED  = true;      // false = click-ads band
   var CLICK_AD_URL      = 'https://araplhn.org/4/a905b1525e6a01fd95637f62cffff93f';
-  var CLICK_AD_GAP_MS   = 1200;   // double-tap par 2 tab na khule (0 = har tap par)
-  var CLICK_AD_SKIP_IDS = { mainActionBtn: 1 }; // yeh button WhatsApp khol raha hai, dusra tab block ho jata
-  var lastClickAd = 0;
+  var CLICK_AD_DELAY_MS = 1500;      // Skip dabane ka time. 0 = turant khule (skip bar nahi dikhega)
+  var CLICK_AD_SKIP_IDS = { mainActionBtn: 1, adSkipBtn: 1 };
+
+  var adsPaused = false;             // popunder chalne par click-ads ruk jate hain (double tab na ho)
+  var lastKey = null;
+  var pendingTimer = null, tickTimer = null;
+
+  function keyOf(el) {
+    return el.id || (el.dataset && el.dataset.method) || (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 30);
+  }
+
+  function snackEl() { return document.getElementById('adSnack'); }
+  function hideSnack() { var n = snackEl(); if (n) n.classList.remove('is-show'); }
+
+  function cancelPending() {
+    clearTimeout(pendingTimer); clearInterval(tickTimer);
+    pendingTimer = null; tickTimer = null;
+    hideSnack();
+  }
+
+  function openAdNow() {
+    try { window.open(CLICK_AD_URL, '_blank'); } catch (err) {}
+  }
+
+  function scheduleAd() {
+    cancelPending();
+    if (CLICK_AD_DELAY_MS <= 0) { openAdNow(); return; }
+    var left = Math.ceil(CLICK_AD_DELAY_MS / 1000);
+    var n = snackEl();
+    var cnt = document.getElementById('adSnackCount');
+    if (cnt) cnt.textContent = left;
+    if (n) n.classList.add('is-show');
+    tickTimer = setInterval(function () {
+      left = Math.max(1, left - 1);
+      if (cnt) cnt.textContent = left;
+    }, 1000);
+    pendingTimer = setTimeout(function () {
+      cancelPending();
+      openAdNow();
+    }, CLICK_AD_DELAY_MS);
+  }
 
   document.addEventListener('click', function (e) {
-    if (!CLICK_AD_ENABLED) return;
     var el = e.target.closest ? e.target.closest('button, .btn, .seg-btn') : null;
     if (!el || el.disabled) return;
+
+    // Skip Ad button
+    if (el.id === 'adSkipBtn') { cancelPending(); return; }
+
+    if (!CLICK_AD_ENABLED || adsPaused) return;
     if (el.tagName === 'A' && el.getAttribute('href')) return;   // Support Us link khud khulta hai
-    if (CLICK_AD_SKIP_IDS[el.id]) return;
-    var now = Date.now();
-    if (now - lastClickAd < CLICK_AD_GAP_MS) return;
-    lastClickAd = now;
-    try { window.open(CLICK_AD_URL, '_blank'); } catch (err) {}
+
+    var key = keyOf(el);
+
+    // WhatsApp button: ad nahi, pending ad cancel, lekin ye "dusra button" ginta hai
+    if (CLICK_AD_SKIP_IDS[el.id]) { cancelPending(); lastKey = key; return; }
+
+    // Same button repeat -> ad nahi
+    if (key === lastKey) return;
+
+    lastKey = key;
+    scheduleAd();
   }, true);
 
-  /* Purana popunder script ab band hai kyunki click-ad system wahi kaam pehle tap par karta hai
-     (dono saath chalte to ek click par 2 tab khulte). Chaho to true kar do. */
-  var ENABLE_POPUNDER   = false;
+  var ENABLE_POPUNDER   = true;   // sirf Campaign Complete par load hota hai
   var ENABLE_SOCIALBAR  = true;
   var ENABLE_BANNERS    = true;
 
@@ -1509,11 +1616,23 @@
 
   function mountBanner(box) {
     if (box.dataset.loaded) return;
-    // skip hidden containers (e.g. desktop banner on mobile)
-    if (box.offsetParent === null && getComputedStyle(box).display === 'none') return;
+    // sirf tab load karo jab ye box screen par visible ho (hidden page / hidden desktop banner skip)
+    if (box.offsetParent === null) { delete box.dataset.queued; return; }
+    var minvw = parseInt(box.dataset.minVw || '0', 10);
+    if (minvw && window.innerWidth < minvw) { box.dataset.loaded = 'skip'; box.style.display = 'none'; return; }
     box.dataset.loaded = '1';
 
     var key = box.dataset.adKey;
+
+    // Script 2: container type banner
+    if (box.dataset.type === 'container') {
+      var c = document.createElement('div');
+      c.id = 'container-' + key;
+      box.appendChild(c);
+      addScript('https://bauval.org/21/' + key);
+      return;
+    }
+
     var w = parseInt(box.dataset.w, 10);
     var h = parseInt(box.dataset.h, 10);
 
@@ -1523,8 +1642,7 @@
     f.scrolling = 'no';
     f.setAttribute('frameborder', '0');
     f.setAttribute('title', 'Advertisement');
-    f.loading = 'lazy';
-    f.style.cssText = 'border:0;width:' + w + 'px;height:' + h + 'px;max-width:100%;display:block;';
+        f.style.cssText = 'border:0;width:' + w + 'px;height:' + h + 'px;max-width:100%;display:block;';
     f.srcdoc =
       '<!DOCTYPE html><html><head><meta charset="utf-8"><base target="_blank">' +
       '<style>html,body{margin:0;padding:0;overflow:hidden;background:transparent}</style></head><body>' +
@@ -1537,10 +1655,19 @@
   function loadAds() {
     // 1) Banners — one at a time, spaced out, so the main thread stays free
     if (ENABLE_BANNERS) {
-      var boxes = Array.prototype.slice.call(document.querySelectorAll('.ad-container[data-ad-key]'));
-      boxes.forEach(function (box, i) {
-        setTimeout(function () { idle(function () { mountBanner(box); }); }, 400 + i * 600);
-      });
+      var slot = 0;
+      function scan() {
+        var boxes = document.querySelectorAll('.ad-container[data-ad-key]:not([data-loaded]):not([data-queued])');
+        Array.prototype.forEach.call(boxes, function (box) {
+          if (box.offsetParent === null) return;           // abhi page hidden hai
+          box.dataset.queued = '1';
+          slot++;
+          var first = (slot <= 3);
+          setTimeout(function () { first ? mountBanner(box) : idle(function () { mountBanner(box); }); }, first ? 0 : 300 * (slot % 4));
+        });
+      }
+      scan();
+      setInterval(scan, 1200);                              // naya page khulte hi uske ads load honge
     }
 
     // 2) Social bar — later
@@ -1556,11 +1683,13 @@
   window.__loadPopunder = function () {
     if (!ENABLE_POPUNDER || popLoaded) return;
     popLoaded = true;
+    adsPaused = true;     // popunder chalu = click-ads ruk jaayein (ek tap par 2 tab na khulein)
+    cancelPending();
     addScript(POPUNDER_SRC);
   };
 
-  if (document.readyState === 'complete') setTimeout(loadAds, 800);
-  else window.addEventListener('load', function () { setTimeout(loadAds, 800); });
+  if (document.readyState === 'complete') setTimeout(loadAds, 100);
+  else window.addEventListener('load', function () { setTimeout(loadAds, 100); });
 })();
 </script>
 
