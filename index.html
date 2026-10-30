@@ -727,6 +727,85 @@
     padding: 9px 16px; border-radius: var(--r-pill);
     min-height: 36px;
   }
+
+  /* ================= USER APP EXTRAS ================= */
+  input[type="email"], input[type="password"], input[type="number"], input[type="tel"] {
+    width: 100%; font-family: inherit; font-size: 14.5px; color: var(--ink-900);
+    background: var(--surface-2); border: 1.5px solid var(--line); border-radius: var(--r-md);
+    padding: 13px 15px; outline: none; transition: border-color .15s ease;
+    -webkit-appearance: none; appearance: none;
+  }
+  input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus, input[type="tel"]:focus {
+    background: #fff; border-color: var(--wa-green); box-shadow: 0 0 0 3px rgba(37,211,102,0.1);
+  }
+  .field { margin-bottom: 10px; }
+  .field label { display: block; font-size: 12px; font-weight: 700; color: var(--ink-600); margin: 0 0 5px 3px; }
+
+  .boot { position: fixed; inset: 0; display: grid; place-items: center; background: var(--surface-3); z-index: 5; }
+  .spinner { width: 34px; height: 34px; border-radius: 50%; border: 3px solid var(--line); border-top-color: var(--wa-green-deep); animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .auth-wrap { position: relative; z-index: 1; min-height: 100dvh; display: flex; align-items: center; justify-content: center; padding: calc(var(--safe-top) + 18px) 14px calc(var(--safe-bottom) + 18px); }
+  .auth-card { width: 100%; max-width: 420px; margin: 0; }
+  .auth-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .auth-sub { font-size: 12.5px; color: var(--ink-500); margin-top: 2px; }
+  .or { display: flex; align-items: center; gap: 10px; color: var(--ink-400); font-size: 12px; font-weight: 600; margin: 14px 0; }
+  .or::before, .or::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+  .link-btn { background: none; border: none; font-family: inherit; font-size: 12.5px; font-weight: 700; color: var(--wa-green-deep); cursor: pointer; padding: 8px 4px; }
+  .g-ico { width: 18px; height: 18px; }
+
+  .plan-chip { border: 1.5px solid var(--line); background: var(--surface); font-family: inherit; font-size: 12px; font-weight: 800; color: var(--ink-700); padding: 8px 13px; border-radius: var(--r-pill); cursor: pointer; white-space: nowrap; }
+  .plan-chip.is-premium-chip { background: linear-gradient(150deg, #fff7dd, #ffe9a6); border-color: #f1d36b; color: #7a5600; }
+
+  .steps-row { display: flex; justify-content: center; margin: 0 0 10px; }
+
+  #appView .shell { padding-bottom: calc(var(--safe-bottom) + 96px); }
+  .bottom-nav {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    display: flex; justify-content: center;
+    padding: 8px 12px calc(var(--safe-bottom) + 8px);
+    background: rgba(255,255,255,0.96); border-top: 1px solid var(--line);
+  }
+  .bottom-nav-in { width: 100%; max-width: 560px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .nav-btn { border: none; background: transparent; font-family: inherit; font-size: 11px; font-weight: 700; color: var(--ink-400); display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 7px 4px; border-radius: 12px; cursor: pointer; }
+  .nav-btn svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+  .nav-btn.is-active { color: var(--wa-teal); background: #e8f7ef; }
+  .toast-wrap { bottom: calc(var(--safe-bottom) + 84px); }
+  .ad-snack { bottom: calc(var(--safe-bottom) + 140px); }
+
+  .is-premium .ad-container, .is-premium .ad-snack { display: none !important; }
+
+  .badge { display: inline-block; font-size: 10px; font-weight: 800; padding: 3px 9px; border-radius: var(--r-pill); }
+  .badge-free { background: var(--surface-3); color: var(--ink-500); }
+  .badge-premium { background: #fff1c2; color: #7a5600; }
+  .badge-pending { background: var(--warn-soft); color: #96590a; }
+  .badge-approved { background: #e6f8ee; color: #0d7247; }
+  .badge-rejected { background: var(--danger-soft); color: #a3212d; }
+  .pill-limited { background: var(--surface-3); color: var(--ink-400); }
+
+  .plan-card { border: 1.5px solid var(--line); border-radius: var(--r-lg); padding: 16px; background: var(--surface); margin-bottom: 12px; }
+  .plan-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .plan-name { font-size: 16px; font-weight: 800; color: var(--ink-900); }
+  .plan-days { font-size: 12px; color: var(--ink-500); margin-top: 2px; }
+  .plan-price { font-size: 22px; font-weight: 900; color: var(--wa-teal); letter-spacing: -0.03em; white-space: nowrap; }
+  .plan-feats { list-style: none; margin: 12px 0; font-size: 13px; color: var(--ink-600); }
+  .plan-feats li { padding: 3px 0 3px 22px; position: relative; }
+  .plan-feats li::before { content: '✓'; position: absolute; left: 0; color: var(--wa-green-deep); font-weight: 900; }
+
+  .kv { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line-soft); font-size: 13.5px; }
+  .kv:last-child { border-bottom: none; }
+  .kv span:first-child { color: var(--ink-500); }
+  .kv span:last-child { font-weight: 700; color: var(--ink-800); text-align: right; word-break: break-word; }
+
+  .list-item { padding: 12px 2px; border-bottom: 1px solid var(--line-soft); font-size: 13.5px; }
+  .list-item:last-child { border-bottom: none; }
+  .li-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .li-sub { font-size: 12px; color: var(--ink-400); margin-top: 3px; word-break: break-word; }
+
+  .pay-method { border: 1.5px dashed var(--ink-300); border-radius: var(--r-md); padding: 12px 14px; margin-bottom: 8px; background: var(--surface-2); font-size: 13px; }
+  .pay-method b { color: var(--ink-900); }
+  .shot-prev { width: 100%; max-height: 220px; object-fit: contain; border-radius: var(--r-md); border: 1px solid var(--line); margin-top: 8px; background: #fff; }
+  .empty { text-align: center; color: var(--ink-400); font-size: 13px; padding: 20px 8px; }
 </style>
 </head>
 <body>
@@ -747,6 +826,60 @@
   </div>
 </div>
 
+<!-- ============ BOOT SPLASH ============ -->
+<div class="boot" id="bootView"><div class="spinner"></div></div>
+
+<!-- ============ AUTH (Login / Register) ============ -->
+<div class="auth-wrap hide" id="authView">
+  <section class="card auth-card anim-rise">
+    <div class="auth-brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.7-.8-.23-.09-.4-.13-.57.12-.17.25-.66.8-.81.96-.15.17-.3.19-.55.06-.25-.12-1.05-.39-2.01-1.24-.74-.66-1.24-1.48-1.38-1.73-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.57-1.37-.78-1.87-.2-.49-.41-.42-.57-.43l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.6.12.17 1.77 2.7 4.28 3.79.6.26 1.06.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+      </div>
+      <div>
+        <div class="brand-title">WA <em>Campaign</em> Studio</div>
+        <div class="auth-sub" id="authSub">Apne account mein login karein</div>
+      </div>
+    </div>
+
+    <div id="setupNotice" class="notice notice-warn hide" style="margin-bottom:12px;">
+      <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span>Firebase config abhi nahi bhari. File mein <strong>firebaseConfig</strong> ki values apne Firebase project se paste karein.</span>
+    </div>
+
+    <div class="segmented" id="authTabs">
+      <button class="seg-btn is-active" data-auth="login" type="button">Login</button>
+      <button class="seg-btn" data-auth="register" type="button">Register</button>
+    </div>
+
+    <div id="authErr" class="notice notice-error hide" style="margin-bottom:12px;"></div>
+    <div id="authOk" class="notice notice-success hide" style="margin-bottom:12px;"></div>
+
+    <div id="loginForm">
+      <div class="field"><label for="loginEmail">Email</label><input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email"></div>
+      <div class="field"><label for="loginPass">Password</label><input type="password" id="loginPass" placeholder="Password" autocomplete="current-password"></div>
+      <button class="btn btn-primary btn-block mt-8" id="loginBtn" type="button">Login</button>
+      <div style="text-align:center;margin-top:4px;"><button class="link-btn" id="forgotBtn" type="button">Password bhool gaye?</button></div>
+    </div>
+
+    <div id="registerForm" class="hide">
+      <div class="field"><label for="regEmail">Email</label><input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email"></div>
+      <div class="field"><label for="regUser">Username</label><input type="text" id="regUser" placeholder="username" autocomplete="username"></div>
+      <div class="field"><label for="regPass">Password</label><input type="password" id="regPass" placeholder="Kam az kam 6 characters" autocomplete="new-password"></div>
+      <div class="field"><label for="regPass2">Confirm password</label><input type="password" id="regPass2" placeholder="Password dobara likhein" autocomplete="new-password"></div>
+      <button class="btn btn-primary btn-block mt-8" id="regBtn" type="button">Account banayein</button>
+    </div>
+
+    <div class="or">ya</div>
+    <button class="btn btn-ghost btn-block" id="googleBtn" type="button">
+      <svg class="g-ico" viewBox="0 0 48 48" style="stroke:none;fill:initial;"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      Continue with Google
+    </button>
+  </section>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="appView" class="hide">
 <div class="shell">
 
   <header class="topbar">
@@ -756,24 +889,27 @@
       </div>
       <div class="brand-txt">
         <div class="brand-title">WA <em>Campaign</em> Studio</div>
-        <div class="brand-sub">Premium Marketing Suite</div>
+        <div class="brand-sub" id="hdrUser">Welcome</div>
       </div>
     </div>
-    <div class="steps" id="steps">
-      <div class="step-chip is-active" data-step="1"><span>1</span></div>
-      <div class="step-line" data-line="1"></div>
-      <div class="step-chip" data-step="2"><span>2</span></div>
-      <div class="step-line" data-line="2"></div>
-      <div class="step-chip" data-step="3"><span>3</span></div>
-    </div>
+    <button class="plan-chip" id="planChip" type="button">Free</button>
   </header>
 
-  <!-- ================= TOP BANNER AD (320x50 Mobile) — loaded later by ADS LOADER ================= -->
+  <!-- TOP BANNERS -->
   <div class="ad-container mobile-only-ad" data-ad-key="481ecd0d09e55ec7908556d1423d10ac" data-w="320" data-h="50"></div>
-
-  <!-- ================= TOP BANNER AD (728x90 Desktop) — loaded later by ADS LOADER ================= -->
   <div class="ad-container desktop-only-ad" data-ad-key="b1e9b468ebf96981785a597bc20ad315" data-w="728" data-h="90"></div>
 
+  <!-- ============ VIEW: CAMPAIGN ============ -->
+  <div id="viewCampaign" class="view">
+    <div class="steps-row">
+      <div class="steps" id="steps">
+        <div class="step-chip is-active" data-step="1"><span>1</span></div>
+        <div class="step-line" data-line="1"></div>
+        <div class="step-chip" data-step="2"><span>2</span></div>
+        <div class="step-line" data-line="2"></div>
+        <div class="step-chip" data-step="3"><span>3</span></div>
+      </div>
+    </div>
   <!-- PAGE 1 -->
   <main id="page1" class="anim-rise">
     <!-- ADS PAGE 1 TOP -->
@@ -1052,460 +1188,91 @@
       <span><strong>Important:</strong> This tool opens WhatsApp with the message pre-filled. You must manually press Send inside WhatsApp. Opening a chat does not guarantee delivery. Never send unsolicited bulk messages.</span>
     </div>
   </main>
+  </div><!-- /viewCampaign -->
 
-</div>
-
-<script>
-(function () {
-  'use strict';
-
-  const S = {
-    previewItems: [],
-    contacts: [],
-    duplicates: 0,
-    message: '',
-    campaignActive: false,
-    openContactId: null,
-    currentStep: 1,
-  };
-
-  const $ = id => document.getElementById(id);
-
-  function esc(str) {
-    return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
-
-  /* ---------- TOAST ---------- */
-  let toastT;
-  function toast(msg, type = 'success') {
-    const wrap = $('toastWrap');
-    const el = $('toast');
-    el.className = 'toast is-' + type;
-    $('toastMsg').textContent = msg;
-    const icons = {
-      success: '<polyline points="20 6 9 17 4 12"/>',
-      error: '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>',
-      warn: '<path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>'
-    };
-    $('toastIcon').innerHTML = icons[type] || icons.success;
-    wrap.classList.add('is-show');
-    clearTimeout(toastT);
-    toastT = setTimeout(() => wrap.classList.remove('is-show'), 3000);
-  }
-
-  /* ---------- MODAL ---------- */
-  function openModal(html) {
-    $('modalBody').innerHTML = html;
-    $('modalBg').classList.add('is-open');
-  }
-  function closeModal() { $('modalBg').classList.remove('is-open'); }
-  $('modalBg').addEventListener('click', e => { if (e.target.id === 'modalBg') closeModal(); });
-
-  /* ---------- STEP NAVIGATION ---------- */
-  function goToStep(n) {
-    S.currentStep = n;
-    ['page1','page2','page3'].forEach((id, i) => {
-      $(id).classList.toggle('hide', i + 1 !== n);
-      if (i + 1 === n) {
-        $(id).classList.remove('anim-rise');
-        void $(id).offsetWidth;
-        $(id).classList.add('anim-rise');
-      }
-    });
-    document.querySelectorAll('.step-chip').forEach(chip => {
-      const step = +chip.dataset.step;
-      chip.classList.toggle('is-active', step === n);
-      chip.classList.toggle('is-done', step < n);
-    });
-    document.querySelectorAll('.step-line').forEach(line => {
-      line.classList.toggle('is-done', +line.dataset.line < n);
-    });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  /* ---------- PHONE NORMALIZATION ---------- */
-  function normalizePhone(raw) {
-    if (!raw) return { valid: false, normalized: '', reason: 'Empty' };
-    let c = String(raw).trim().replace(/[\s\-().]/g, '');
-    if (!c) return { valid: false, normalized: '', reason: 'Empty after cleanup' };
-    if (/^03\d{9}$/.test(c)) return { valid: true, normalized: '+92' + c.slice(1), reason: 'Local PK → intl' };
-    if (/^\+92\d{10}$/.test(c)) return { valid: true, normalized: c, reason: 'International +92' };
-    if (/^92\d{10}$/.test(c)) return { valid: true, normalized: '+' + c, reason: '92 → +92' };
-    if (/^\+\d{10,15}$/.test(c)) return { valid: true, normalized: c, reason: 'International' };
-    return { valid: false, normalized: c, reason: 'Unrecognized format' };
-  }
-
-  function parseText(text) {
-    if (!text || !text.trim()) return [];
-    const parts = text.split(/[\n,;]+/).map(s => s.trim()).filter(Boolean);
-    const out = [];
-    for (const part of parts) {
-      if ((part.match(/\+/g) || []).length > 1) {
-        out.push(...part.split(/\s+/).filter(Boolean));
-      } else if (part.includes(' ') && part.replace(/\s/g, '').length > 12) {
-        out.push(...part.split(/\s+/).filter(Boolean));
-      } else {
-        out.push(part);
-      }
-    }
-    return out;
-  }
-
-  /* ---------- PAGE 1: IMPORT ---------- */
-  let activeTab = 'paste';
-
-  document.querySelectorAll('#importTabs .seg-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#importTabs .seg-btn').forEach(b => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      activeTab = btn.dataset.method;
-      $('pasteArea').classList.toggle('hide', activeTab !== 'paste');
-      $('fileArea').classList.toggle('hide', activeTab === 'paste');
-      $('fileInput').accept = activeTab === 'csv' ? '.csv' : '.txt';
-      $('previewArea').classList.add('hide');
-      $('importError').classList.add('hide');
-    });
-  });
-
-  const dz = $('dropzone');
-  dz.addEventListener('click', () => $('fileInput').click());
-  ['dragenter','dragover'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('is-over'); }));
-  ['dragleave','drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('is-over'); }));
-  dz.addEventListener('drop', e => {
-    e.preventDefault();
-    if (e.dataTransfer.files.length) {
-      $('fileInput').files = e.dataTransfer.files;
-      showFileName(e.dataTransfer.files[0].name);
-    }
-  });
-  $('fileInput').addEventListener('change', e => {
-    if (e.target.files.length) showFileName(e.target.files[0].name);
-  });
-  function showFileName(name) {
-    const el = $('dzFile');
-    el.textContent = '📎 ' + name;
-    el.classList.remove('hide');
-  }
-
-  $('parseBtn').addEventListener('click', () => {
-    const finish = (text) => {
-      const raw = parseText(text);
-      if (!raw.length) {
-        $('importError').innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>No numbers detected in the input.</span>';
-        $('importError').classList.remove('hide');
-        $('previewArea').classList.add('hide');
-        toast('No numbers found', 'error');
-        return;
-      }
-      $('importError').classList.add('hide');
-      buildPreview(raw);
-    };
-
-    if (activeTab === 'paste') {
-      const t = $('pasteInput').value;
-      if (!t.trim()) { toast('Please paste some numbers first', 'warn'); return; }
-      finish(t);
-    } else {
-      const f = $('fileInput').files[0];
-      if (!f) { toast('Please select a file first', 'warn'); return; }
-      const reader = new FileReader();
-      reader.onload = ev => finish(ev.target.result);
-      reader.readAsText(f);
-    }
-  });
-
-  function buildPreview(rawList) {
-    const seen = new Set();
-    const items = [];
-    let dup = 0;
-    for (const raw of rawList) {
-      if (!raw.trim()) continue;
-      const norm = normalizePhone(raw);
-      const key = norm.valid ? norm.normalized : raw.trim();
-      if (seen.has(key)) { dup++; continue; }
-      seen.add(key);
-      items.push({ original: raw.trim(), normalized: norm.normalized, valid: norm.valid, reason: norm.reason });
-    }
-    S.previewItems = items;
-    S.duplicates = dup;
-    const validCount = items.filter(i => i.valid).length;
-    const invalidCount = items.length - validCount;
-
-    $('previewSummary').innerHTML =
-      `<svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>` +
-      `<span><strong>${items.length}</strong> unique · <strong style="color:#0d7247">${validCount} valid</strong> · <strong style="color:#a3212d">${invalidCount} invalid</strong> · <strong style="color:#96590a">${dup} duplicate${dup!==1?'s':''} skipped</strong></span>`;
-
-    $('previewList').innerHTML = items.map(it => `
-      <div class="row-item">
-        <span class="row-num">${esc(it.normalized || it.original)}</span>
-        <span class="pill pill-${it.valid ? 'valid' : 'invalid'}">${it.valid ? 'Valid' : 'Invalid'}</span>
+  <!-- ============ VIEW: NUMBERS ============ -->
+  <div id="viewNumbers" class="view hide">
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="867e7cfd165ab9e80d0545ddaa9c5e55" data-w="468" data-h="60" data-min-vw="520"></div>
+    <section class="card">
+      <div class="card-head">
+        <div class="card-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div class="card-h">
+          <div class="card-t">Get Numbers</div>
+          <div class="card-s">Admin ke upload kiye hue numbers, roz ki limit ke andar</div>
+        </div>
       </div>
-    `).join('');
-
-    $('previewArea').classList.remove('hide');
-    toast(`${items.length} numbers parsed`, 'success');
-  }
-
-  $('generateBtn').addEventListener('click', () => {
-    if (!S.previewItems.length) return;
-    const validCount = S.previewItems.filter(i => i.valid).length;
-    if (validCount === 0) { toast('No valid numbers to proceed with', 'error'); return; }
-    S.contacts = S.previewItems.map((it, i) => ({
-      id: 'c_' + i + '_' + Date.now().toString(36),
-      original: it.original,
-      normalized: it.normalized,
-      valid: it.valid,
-      reason: it.reason,
-      status: it.valid ? 'pending' : 'invalid',
-    }));
-    renderMessageStats();
-    goToStep(2);
-    toast('Contacts imported successfully', 'success');
-  });
-
-  /* ---------- PAGE 2: MESSAGE ---------- */
-  function renderMessageStats() {
-    const total = S.contacts.length;
-    const valid = S.contacts.filter(c => c.valid).length;
-    $('statTotal').textContent = total;
-    $('statValid').textContent = valid;
-    $('statDup').textContent = S.duplicates;
-    $('statInvalid').textContent = total - valid;
-  }
-
-  $('messageEditor').addEventListener('input', e => {
-    S.message = e.target.value;
-    $('charCount').textContent = S.message.length + ' characters';
-  });
-
-  $('previewMsgBtn').addEventListener('click', () => {
-    if (!S.message.trim()) { toast('Message is empty', 'warn'); return; }
-    $('waBubbleTxt').textContent = S.message;
-    $('msgPreviewWrap').classList.remove('hide');
-    toast('Preview shown', 'success');
-  });
-
-  $('consentCheck').addEventListener('change', e => {
-    $('consentRow').classList.toggle('is-checked', e.target.checked);
-    if (e.target.checked) $('consentErr').classList.add('hide');
-  });
-
-  $('backToPage1').addEventListener('click', () => goToStep(1));
-
-  $('startCampaignBtn').addEventListener('click', () => {
-    if (!S.message.trim()) { toast('Please write a message first', 'error'); return; }
-    if (!$('consentCheck').checked) {
-      $('consentErr').classList.remove('hide');
-      toast('Please confirm consent', 'error');
-      return;
-    }
-    $('consentErr').classList.add('hide');
-    const valid = S.contacts.filter(c => c.valid);
-    if (!valid.length) { toast('No valid contacts available', 'error'); return; }
-    S.campaignActive = true;
-    S.openContactId = null;
-    S.contacts.forEach(c => { if (c.valid) c.status = 'pending'; });
-    goToStep(3);
-    renderSendPage();
-    toast('Campaign started 🚀', 'success');
-  });
-
-  /* ---------- PAGE 3: SEND ---------- */
-  function getQueue() { return S.contacts.filter(c => c.valid); }
-  function getNext() {
-    const q = getQueue();
-    for (let i = 0; i < q.length; i++) if (q[i].status === 'pending') return q[i];
-    return null;
-  }
-
-  function renderSendPage() {
-    if (!S.campaignActive) return;
-
-    const q = getQueue();
-    const done = q.filter(c => ['sent','skipped','failed'].includes(c.status));
-    const pending = q.filter(c => c.status === 'pending');
-    const opened = q.filter(c => c.status === 'chat_opened');
-    const sent = q.filter(c => c.status === 'sent');
-    const skipped = q.filter(c => c.status === 'skipped');
-
-    const total = q.length;
-    const pct = total ? Math.round((done.length / total) * 100) : 0;
-
-    $('progressFill').style.width = pct + '%';
-    $('progressText').textContent = done.length + ' / ' + total;
-    $('progSent').textContent = sent.length;
-    $('progPending').textContent = pending.length;
-    $('progOpened').textContent = opened.length;
-    $('progSkipped').textContent = skipped.length;
-
-    $('sendBubbleTxt').textContent = S.message || 'No message written';
-
-    const next = getNext();
-    const openedContact = opened.find(c => c.id === S.openContactId);
-    const mainBtn = $('mainActionBtn');
-    const markRow = $('markRow');
-    const doneBlock = $('campaignDone');
-
-    markRow.classList.add('hide');
-    doneBlock.classList.add('hide');
-    mainBtn.disabled = false;
-    mainBtn.classList.add('pulse');
-    mainBtn.style.opacity = '1';
-
-    if (!next && !openedContact) {
-      $('heroEyebrow').textContent = 'Campaign Complete';
-      $('heroNum').textContent = '🎉';
-      $('heroSub').textContent = 'All contacts processed';
-      $('heroTime').textContent = 'Done';
-      $('heroCount').textContent = q.length + ' of ' + q.length;
-      $('currentRecipient').textContent = 'No more recipients';
-      mainBtn.disabled = true;
-      mainBtn.classList.remove('pulse');
-      mainBtn.style.opacity = '.4';
-      doneBlock.classList.remove('hide');
-      if (window.__loadPopunder) setTimeout(window.__loadPopunder, 1500);
-      renderFullList();
-      return;
-    }
-
-    if (openedContact) {
-      const idx = q.findIndex(c => c.id === openedContact.id);
-      $('heroEyebrow').textContent = 'Chat Opened — Mark Result';
-      $('heroNum').textContent = openedContact.normalized;
-      $('heroSub').textContent = 'Did you send the message? Mark below.';
-      $('heroTime').textContent = 'In progress';
-      $('heroCount').textContent = (idx + 1) + ' of ' + q.length;
-      $('currentRecipient').textContent = openedContact.normalized;
-
-      mainBtn.disabled = true;
-      mainBtn.classList.remove('pulse');
-      mainBtn.style.opacity = '.55';
-      $('mainActionLabel').textContent = 'Chat Opened — Mark Result Below';
-      $('mainActionIcon').innerHTML = '<path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>';
-
-      markRow.classList.remove('hide');
-    }
-    else if (next) {
-      const idx = q.findIndex(c => c.id === next.id);
-      $('heroEyebrow').textContent = 'Next Recipient';
-      $('heroNum').textContent = next.normalized;
-      $('heroSub').textContent = 'Tap Open WhatsApp to begin';
-      $('heroTime').textContent = 'Ready';
-      $('heroCount').textContent = (idx + 1) + ' of ' + q.length;
-      $('currentRecipient').textContent = next.normalized;
-
-      $('mainActionLabel').textContent = 'Open WhatsApp Chat';
-      $('mainActionIcon').innerHTML = '<path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>';
-    }
-
-    renderFullList();
-  }
-
-  function renderFullList() {
-    $('fullContactList').innerHTML = S.contacts.map(c => `
-      <div class="row-item">
-        <span class="row-num">${esc(c.normalized || c.original)}</span>
-        <span class="pill pill-${c.valid ? 'valid' : 'invalid'}">${c.valid ? 'Valid' : 'Invalid'}</span>
-        <span class="pill pill-${c.status}">${c.status.replace('_',' ')}</span>
+      <div class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="stat"><div class="stat-v" id="numAllow">0</div><div class="stat-l">Daily limit</div></div>
+        <div class="stat is-warn"><div class="stat-v" id="numTaken">0</div><div class="stat-l">Aaj liye</div></div>
+        <div class="stat is-teal"><div class="stat-v" id="numLeft">0</div><div class="stat-l">Baaki</div></div>
       </div>
-    `).join('');
-  }
-
-  $('mainActionBtn').addEventListener('click', () => {
-    if (S.openContactId) {
-      toast('Please mark the current result first', 'warn');
-      return;
-    }
-    const next = getNext();
-    if (!next) { toast('No pending contacts', 'warn'); return; }
-
-    const phone = next.normalized.replace('+', '');
-    const encoded = encodeURIComponent(S.message);
-    const url = `https://wa.me/${phone}?text=${encoded}`;
-
-    next.status = 'chat_opened';
-    S.openContactId = next.id;
-
-    window.open(url, '_blank');
-    renderSendPage();
-    toast('WhatsApp opened. Send the message, then mark below.', 'success');
-  });
-
-  $('markSentBtn').addEventListener('click', () => {
-    const c = S.contacts.find(x => x.id === S.openContactId);
-    if (!c) return;
-    c.status = 'sent';
-    S.openContactId = null;
-    renderSendPage();
-    toast('Marked as Sent ✅ — Next contact ready', 'success');
-  });
-
-  $('markSkipBtn').addEventListener('click', () => {
-    const c = S.contacts.find(x => x.id === S.openContactId);
-    if (!c) return;
-    c.status = 'skipped';
-    S.openContactId = null;
-    renderSendPage();
-    toast('Skipped — Next contact ready', 'warn');
-  });
-
-  $('markFailBtn').addEventListener('click', () => {
-    const c = S.contacts.find(x => x.id === S.openContactId);
-    if (!c) return;
-    c.status = 'failed';
-    S.openContactId = null;
-    renderSendPage();
-    toast('Marked as Failed — Next contact ready', 'error');
-  });
-
-  /* ---------- RESET / CLEAR ---------- */
-  $('resetAllBtn').addEventListener('click', () => {
-    openModal(`
-      <div class="modal-t"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>Start a New Campaign?</div>
-      <p class="modal-p">This will clear all contacts, the message, and reset the campaign. This cannot be undone.</p>
-      <div class="row gap-8 mt-16">
-        <button class="btn btn-ghost grow" id="modalCancel">Cancel</button>
-        <button class="btn btn-danger grow" id="modalConfirm">Reset</button>
+      <button class="btn btn-primary btn-block mt-12" id="claimBtn" type="button">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Numbers hasil karein
+      </button>
+      <div id="claimResult" class="hide mt-12 anim-rise">
+        <div class="notice notice-success" id="claimSummary"></div>
+        <div class="scroll-box mt-8" id="claimList"></div>
+        <div class="row gap-8 mt-8">
+          <button class="btn btn-ghost grow" id="copyClaimBtn" type="button">Copy all</button>
+          <button class="btn btn-teal grow" id="useClaimBtn" type="button">Campaign mein use karein</button>
+        </div>
       </div>
-    `);
-    $('modalCancel').addEventListener('click', closeModal);
-    $('modalConfirm').addEventListener('click', () => {
-      closeModal();
-      resetAll();
-    });
-  });
+    </section>
+    <div class="ad-container" style="margin-top:12px;min-height:250px;" data-ad-key="8105531df50c4c704e02bcd7a69a2245" data-w="300" data-h="250"></div>
+    <section class="card">
+      <div class="card-t" style="margin-bottom:8px;">Pehle liye hue numbers</div>
+      <div id="claimHistory"><div class="empty">Abhi koi record nahi</div></div>
+    </section>
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="27776636f2a3a50672cc1cf837861260" data-type="container" data-w="320" data-h="60"></div>
+    <div class="ad-container" style="margin-top:12px;min-height:300px;" data-ad-key="b32153d489e89b591993d8d84fee1cdc" data-w="160" data-h="300"></div>
+  </div>
 
-  function resetAll() {
-    S.previewItems = [];
-    S.contacts = [];
-    S.duplicates = 0;
-    S.message = '';
-    S.campaignActive = false;
-    S.openContactId = null;
-    $('pasteInput').value = '';
-    $('messageEditor').value = '';
-    $('charCount').textContent = '0 characters';
-    $('fileInput').value = '';
-    $('dzFile').classList.add('hide');
-    $('previewArea').classList.add('hide');
-    $('consentCheck').checked = false;
-    $('consentRow').classList.remove('is-checked');
-    $('msgPreviewWrap').classList.add('hide');
-    $('campaignDone').classList.add('hide');
-    $('markRow').classList.add('hide');
-    $('importError').classList.add('hide');
-    goToStep(1);
-    toast('Ready for a new campaign', 'success');
-  }
+  <!-- ============ VIEW: PLANS ============ -->
+  <div id="viewPlans" class="view hide">
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="867e7cfd165ab9e80d0545ddaa9c5e55" data-w="468" data-h="60" data-min-vw="520"></div>
+    <section class="card" id="currentPlanCard"></section>
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="27776636f2a3a50672cc1cf837861260" data-type="container" data-w="320" data-h="60"></div>
+    <div class="card-t" style="margin:4px 4px 10px;">Premium plans</div>
+    <div id="plansList"><div class="empty">Plans load ho rahe hain…</div></div>
+    <div class="ad-container" style="margin-top:12px;min-height:250px;" data-ad-key="8105531df50c4c704e02bcd7a69a2245" data-w="300" data-h="250"></div>
+    <section class="card">
+      <div class="card-t" style="margin-bottom:6px;">Meri requests</div>
+      <div id="myRequests"><div class="empty">Abhi koi request nahi</div></div>
+    </section>
+    <div class="ad-container" style="margin-top:12px;min-height:300px;" data-ad-key="b32153d489e89b591993d8d84fee1cdc" data-w="160" data-h="300"></div>
+  </div>
 
-  $('clearLogBtn').addEventListener('click', () => {
-    $('fullContactList').innerHTML = '<div style="padding:20px;font-size:13px;color:var(--ink-400);text-align:center;">No contacts</div>';
-  });
+  <!-- ============ VIEW: ACCOUNT ============ -->
+  <div id="viewAccount" class="view hide">
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="867e7cfd165ab9e80d0545ddaa9c5e55" data-w="468" data-h="60" data-min-vw="520"></div>
+    <section class="card">
+      <div class="card-head">
+        <div class="card-ico"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="card-h"><div class="card-t" id="accName">—</div><div class="card-s" id="accEmail">—</div></div>
+      </div>
+      <div id="accInfo"></div>
+      <button class="btn btn-danger btn-block mt-12" id="logoutBtn" type="button">Logout</button>
+    </section>
+    <div class="ad-container" style="margin-top:12px;min-height:250px;" data-ad-key="8105531df50c4c704e02bcd7a69a2245" data-w="300" data-h="250"></div>
+    <section class="card">
+      <div class="card-t" style="margin-bottom:6px;">Meri campaigns</div>
+      <div id="myLogs"><div class="empty">Abhi koi campaign nahi</div></div>
+    </section>
+    <div class="ad-container" style="margin-top:12px;min-height:60px;" data-ad-key="27776636f2a3a50672cc1cf837861260" data-type="container" data-w="320" data-h="60"></div>
+  </div>
 
-  goToStep(1);
+</div><!-- /shell -->
 
-})();
-</script>
+<nav class="bottom-nav">
+  <div class="bottom-nav-in">
+    <button class="nav-btn is-active" data-view="Campaign" type="button"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>Campaign</button>
+    <button class="nav-btn" data-view="Numbers" type="button"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Numbers</button>
+    <button class="nav-btn" data-view="Plans" type="button"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Plans</button>
+    <button class="nav-btn" data-view="Account" type="button"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Account</button>
+  </div>
+</nav>
+</div><!-- /appView -->
 
 <!-- ================================================================= -->
 <!-- ====================== ADS LOADER (FIX) ========================= -->
@@ -1527,7 +1294,7 @@
         Jab user koi DUSRA button dabata hai, tab ad phir se khulta hai.
      4) Open WhatsApp button par ad nahi (wo khud naya tab kholta hai), lekin wo "dusra button" ginta hai.
   ============================================================ */
-  var CLICK_AD_ENABLED  = true;      // false = click-ads band
+  var CLICK_AD_ENABLED  = false;     // login ke baad free users ke liye window.__startAds() isse true karta hai
   var CLICK_AD_URL      = 'https://araplhn.org/4/a905b1525e6a01fd95637f62cffff93f';
   var CLICK_AD_DELAY_MS = 1500;      // Skip dabane ka time. 0 = turant khule (skip bar nahi dikhega)
   var CLICK_AD_SKIP_IDS = { mainActionBtn: 1, adSkipBtn: 1 };
@@ -1688,9 +1455,873 @@
     addScript(POPUNDER_SRC);
   };
 
-  if (document.readyState === 'complete') setTimeout(loadAds, 100);
-  else window.addEventListener('load', function () { setTimeout(loadAds, 100); });
+  /* Ads sirf FREE users ke liye: login ke baad window.__startAds() call hota hai.
+     Premium user ke liye ye kabhi call nahi hota, isliye uske pass koi ad nahi aata. */
+  var adsStarted = false;
+  window.__startAds = function () {
+    if (adsStarted) return;
+    adsStarted = true;
+    CLICK_AD_ENABLED = true;
+    setTimeout(loadAds, 100);
+  };
 })();
+</script>
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {
+  getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword,
+  signOut, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail, updateProfile
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {
+  getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, collection, query, where,
+  getDocs, addDoc, serverTimestamp, increment, runTransaction, orderBy, limit
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+/* =====================================================================
+   1) APNA FIREBASE CONFIG YAHAN PASTE KAREIN
+   Firebase Console -> Project settings -> Your apps -> Web app -> Config
+   ===================================================================== */
+const firebaseConfig = {
+  apiKey: "AIzaSyAKc3IpoNuY-VCtwwcJIpuwaHQnxceEtF8",
+  authDomain: "marketing-cbdd7.firebaseapp.com",
+  projectId: "marketing-cbdd7",
+  storageBucket: "marketing-cbdd7.firebasestorage.app",
+  messagingSenderId: "720329998483",
+  appId: "1:720329998483:web:41016e47468a8e9ab5cd66",
+  measurementId: "G-WY4B9ZHPTP"
+};
+
+const $ = id => document.getElementById(id);
+const esc = str => String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const configured = !String(firebaseConfig.apiKey).startsWith('YOUR_');
+
+let app, auth, db;
+let me = null, profile = null, unsubProfile = null;
+let settings = { freeDailyMessages: 50, freeNumbersPerDay: 12, siteName: 'WA Campaign Studio' };
+let plansCache = [], myRequests = [], adsDecided = null, appShown = false, pendingUsername = '';
+let lastClaim = [];
+
+/* ---------------- helpers ---------------- */
+function todayStr() { return new Date().toLocaleDateString('en-CA'); }
+function tsMs(t) { return t && typeof t.toMillis === 'function' ? t.toMillis() : 0; }
+function fmtDate(t) { const m = tsMs(t); return m ? new Date(m).toLocaleDateString() : '—'; }
+function fmtDateTime(t) { const m = tsMs(t); return m ? new Date(m).toLocaleString() : '—'; }
+function featList(f) {
+  if (Array.isArray(f)) return f.filter(Boolean);
+  return String(f || '').split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+}
+function planActive(p) { return !!(p && p.active && tsMs(p.expiresAt) > Date.now()); }
+function isPremium() { return planActive(profile && profile.plan); }
+function daysLeft() { if (!isPremium()) return 0; return Math.max(0, Math.ceil((tsMs(profile.plan.expiresAt) - Date.now()) / 86400000)); }
+function usageToday() {
+  const u = (profile && profile.usage) || {};
+  if (u.lastResetDate !== todayStr()) return { msgs: 0, claimed: 0 };
+  return { msgs: u.freeDailyUsed || 0, claimed: u.numbersClaimedToday || 0 };
+}
+function msgsLeft() { return isPremium() ? Infinity : Math.max(0, settings.freeDailyMessages - usageToday().msgs); }
+function numbersAllowance() { return isPremium() ? (profile.plan.numberLimit || 0) : settings.freeNumbersPerDay; }
+function numbersLeft() { return Math.max(0, numbersAllowance() - usageToday().claimed); }
+
+/* ---------------- toast / modal ---------------- */
+let toastT;
+function toast(msg, type = 'success') {
+  const wrap = $('toastWrap'), el = $('toast');
+  el.className = 'toast is-' + type;
+  $('toastMsg').textContent = msg;
+  const icons = {
+    success: '<polyline points="20 6 9 17 4 12"/>',
+    error: '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>',
+    warn: '<path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>'
+  };
+  $('toastIcon').innerHTML = icons[type] || icons.success;
+  wrap.classList.add('is-show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => wrap.classList.remove('is-show'), 3000);
+}
+function openModal(html) { $('modalBody').innerHTML = html; $('modalBg').classList.add('is-open'); }
+function closeModal() { $('modalBg').classList.remove('is-open'); }
+$('modalBg').addEventListener('click', e => { if (e.target.id === 'modalBg') closeModal(); });
+
+/* =====================================================================
+   AUTH SCREEN
+   ===================================================================== */
+function authMsg(kind, text) {
+  $('authErr').classList.add('hide'); $('authOk').classList.add('hide');
+  if (!text) return;
+  const el = kind === 'ok' ? $('authOk') : $('authErr');
+  el.textContent = text; el.classList.remove('hide');
+}
+function niceAuthError(e) {
+  const c = (e && e.code) || '';
+  const map = {
+    'auth/invalid-email': 'Email sahi nahi hai.',
+    'auth/user-not-found': 'Is email ka account nahi mila.',
+    'auth/wrong-password': 'Password galat hai.',
+    'auth/invalid-credential': 'Email ya password galat hai.',
+    'auth/email-already-in-use': 'Ye email pehle se register hai. Login karein.',
+    'auth/weak-password': 'Password kam az kam 6 characters ka rakhein.',
+    'auth/too-many-requests': 'Bahut zyada koshishen. Thori der baad try karein.',
+    'auth/popup-closed-by-user': 'Google window band ho gayi.',
+    'auth/cancelled-popup-request': 'Google window band ho gayi.',
+    'auth/network-request-failed': 'Internet check karein.',
+    'auth/unauthorized-domain': 'Ye domain Firebase Authentication > Settings > Authorized domains mein add karein.',
+    'auth/operation-not-allowed': 'Firebase Authentication mein ye sign-in method enable karein.'
+  };
+  return map[c] || ('Error: ' + (e && e.message ? e.message : 'kuch galat hua'));
+}
+document.querySelectorAll('#authTabs .seg-btn').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#authTabs .seg-btn').forEach(x => x.classList.remove('is-active'));
+  b.classList.add('is-active');
+  const reg = b.dataset.auth === 'register';
+  $('loginForm').classList.toggle('hide', reg);
+  $('registerForm').classList.toggle('hide', !reg);
+  $('authSub').textContent = reg ? 'Naya account banayein' : 'Apne account mein login karein';
+  authMsg();
+}));
+
+async function doLogin() {
+  const email = $('loginEmail').value.trim(), pass = $('loginPass').value;
+  if (!email || !pass) return authMsg('err', 'Email aur password likhein.');
+  $('loginBtn').disabled = true; authMsg();
+  try { await signInWithEmailAndPassword(auth, email, pass); }
+  catch (e) { authMsg('err', niceAuthError(e)); }
+  $('loginBtn').disabled = false;
+}
+async function doRegister() {
+  const email = $('regEmail').value.trim(), user = $('regUser').value.trim();
+  const p1 = $('regPass').value, p2 = $('regPass2').value;
+  if (!email || !user || !p1 || !p2) return authMsg('err', 'Saari fields bharein.');
+  if (user.length < 3) return authMsg('err', 'Username kam az kam 3 characters ka ho.');
+  if (p1.length < 6) return authMsg('err', 'Password kam az kam 6 characters ka ho.');
+  if (p1 !== p2) return authMsg('err', 'Password aur confirm password match nahi karte.');
+  $('regBtn').disabled = true; authMsg();
+  pendingUsername = user;
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, p1);
+    try { await updateProfile(cred.user, { displayName: user }); } catch (_) {}
+  } catch (e) { pendingUsername = ''; authMsg('err', niceAuthError(e)); }
+  $('regBtn').disabled = false;
+}
+async function doGoogle() {
+  authMsg();
+  try { await signInWithPopup(auth, new GoogleAuthProvider()); }
+  catch (e) { authMsg('err', niceAuthError(e)); }
+}
+async function doForgot() {
+  const email = $('loginEmail').value.trim();
+  if (!email) return authMsg('err', 'Pehle upar email likhein, phir "Password bhool gaye?" dabayein.');
+  try { await sendPasswordResetEmail(auth, email); authMsg('ok', 'Password reset ka link email par bhej diya.'); }
+  catch (e) { authMsg('err', niceAuthError(e)); }
+}
+
+/* =====================================================================
+   USER DOC + PROFILE LISTENER
+   ===================================================================== */
+async function ensureUserDoc(user) {
+  const ref = doc(db, 'users', user.uid);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) {
+    const uname = pendingUsername || user.displayName || (user.email || 'user').split('@')[0];
+    await setDoc(ref, {
+      uid: user.uid, email: user.email || '', username: uname, photoURL: user.photoURL || '',
+      role: 'user', isBlocked: false,
+      createdAt: serverTimestamp(), lastLogin: serverTimestamp(),
+      plan: { active: false },
+      usage: { totalMessagesSent: 0, totalNumbersImported: 0, freeDailyUsed: 0, numbersClaimedToday: 0, lastResetDate: todayStr() }
+    });
+  } else {
+    try { await updateDoc(ref, { lastLogin: serverTimestamp() }); } catch (_) {}
+  }
+  pendingUsername = '';
+}
+
+function forceLogout(msg) {
+  if (unsubProfile) { unsubProfile(); unsubProfile = null; }
+  signOut(auth).finally(() => {
+    $('appView').classList.add('hide');
+    $('authView').classList.remove('hide');
+    authMsg('err', msg);
+  });
+}
+
+function onProfile() {
+  if (profile.isBlocked) return forceLogout('Aapka account block hai. Admin se rabta karein.');
+
+  // ads decision (free = ads, premium = no ads)
+  const now = isPremium() ? 'premium' : 'free';
+  if (adsDecided === null) {
+    adsDecided = now;
+    if (now === 'premium') document.body.classList.add('is-premium');
+    else if (window.__startAds) window.__startAds();
+  } else if (adsDecided !== now) {
+    location.reload();
+    return;
+  }
+
+  if (!appShown) {
+    appShown = true;
+    $('bootView').classList.add('hide');
+    $('authView').classList.add('hide');
+    $('appView').classList.remove('hide');
+    goToStep(1);
+    loadSettings();
+  }
+  renderChrome();
+}
+
+function renderChrome() {
+  $('hdrUser').textContent = profile.username || me.email;
+  const chip = $('planChip');
+  if (isPremium()) { chip.textContent = '⭐ Premium · ' + daysLeft() + ' din'; chip.classList.add('is-premium-chip'); }
+  else { chip.textContent = 'Free · ' + msgsLeft() + ' msgs baaki'; chip.classList.remove('is-premium-chip'); }
+  renderLimitNotice();
+  if (!$('viewNumbers').classList.contains('hide')) renderNumbersStats();
+  if (!$('viewPlans').classList.contains('hide')) renderCurrentPlan();
+  if (!$('viewAccount').classList.contains('hide')) renderAccount();
+}
+
+async function loadSettings() {
+  try {
+    const s = await getDoc(doc(db, 'adminSettings', 'config'));
+    if (s.exists()) {
+      const d = s.data();
+      if (typeof d.freeDailyMessages === 'number') settings.freeDailyMessages = d.freeDailyMessages;
+      if (typeof d.freeNumbersPerDay === 'number') settings.freeNumbersPerDay = d.freeNumbersPerDay;
+      if (d.siteName) settings.siteName = d.siteName;
+      renderChrome();
+    }
+  } catch (_) {}
+}
+
+/* usage counters (daily reset aware) */
+async function bumpUsage({ msgs = 0, sent = 0, imported = 0, claimed = 0 }) {
+  if (!me || !profile) return;
+  const ref = doc(db, 'users', me.uid);
+  const stale = ((profile.usage || {}).lastResetDate !== todayStr());
+  try {
+    if (stale) {
+      await updateDoc(ref, {
+        'usage.lastResetDate': todayStr(), 'usage.freeDailyUsed': msgs, 'usage.numbersClaimedToday': claimed,
+        'usage.totalMessagesSent': increment(sent), 'usage.totalNumbersImported': increment(imported)
+      });
+    } else {
+      const u = {};
+      if (msgs) u['usage.freeDailyUsed'] = increment(msgs);
+      if (claimed) u['usage.numbersClaimedToday'] = increment(claimed);
+      if (sent) u['usage.totalMessagesSent'] = increment(sent);
+      if (imported) u['usage.totalNumbersImported'] = increment(imported);
+      if (Object.keys(u).length) await updateDoc(ref, u);
+    }
+  } catch (e) { console.warn('usage update failed', e); }
+}
+
+/* =====================================================================
+   NAVIGATION
+   ===================================================================== */
+function showView(name) {
+  ['Campaign', 'Numbers', 'Plans', 'Account'].forEach(v => $('view' + v).classList.toggle('hide', v !== name));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('is-active', b.dataset.view === name));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (name === 'Numbers') { renderNumbersStats(); loadClaimHistory(); }
+  if (name === 'Plans') { renderCurrentPlan(); loadPlans(); loadMyRequests(); }
+  if (name === 'Account') { renderAccount(); loadMyLogs(); }
+}
+document.querySelectorAll('.nav-btn').forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
+$('planChip').addEventListener('click', () => showView('Plans'));
+
+/* =====================================================================
+   NUMBERS (claim from admin pool)
+   ===================================================================== */
+function renderNumbersStats() {
+  $('numAllow').textContent = numbersAllowance();
+  $('numTaken').textContent = usageToday().claimed;
+  $('numLeft').textContent = numbersLeft();
+}
+
+async function takeFromPool(n) {
+  const out = [];
+  const snap = await getDocs(query(collection(db, 'numberBatches'), where('status', '==', 'available'), limit(6)));
+  for (const d of snap.docs) {
+    if (out.length >= n) break;
+    const need = n - out.length;
+    let got = [];
+    await runTransaction(db, async tx => {
+      got = [];
+      const s = await tx.get(d.ref);
+      if (!s.exists()) return;
+      const data = s.data();
+      if (data.status !== 'available') return;
+      const nums = data.numbers || [];
+      const cur = data.cursor || 0;
+      got = nums.slice(cur, cur + need);
+      const nc = cur + got.length;
+      tx.update(d.ref, { cursor: nc, status: nc >= nums.length ? 'exhausted' : 'available' });
+    });
+    out.push(...got);
+  }
+  return out;
+}
+
+async function claimNumbers() {
+  const left = numbersLeft();
+  if (left <= 0) {
+    toast(isPremium() ? 'Aaj ki numbers limit poori ho gayi' : 'Free limit poori. Zyada numbers ke liye plan lein', 'warn');
+    return;
+  }
+  const btn = $('claimBtn'); btn.disabled = true;
+  try {
+    const nums = await takeFromPool(left);
+    if (!nums.length) { toast('Abhi admin ne numbers upload nahi kiye / khatam hain', 'warn'); btn.disabled = false; return; }
+    await addDoc(collection(db, 'users', me.uid, 'numberClaims'), {
+      numbers: nums, count: nums.length, date: todayStr(), claimedAt: serverTimestamp()
+    });
+    await bumpUsage({ claimed: nums.length });
+    lastClaim = nums;
+    $('claimSummary').innerHTML = '<span><strong>' + nums.length + '</strong> numbers mil gaye</span>';
+    $('claimList').innerHTML = nums.map(n => '<div class="row-item"><span class="row-num">' + esc(n) + '</span></div>').join('');
+    $('claimResult').classList.remove('hide');
+    toast(nums.length + ' numbers mil gaye', 'success');
+    loadClaimHistory();
+  } catch (e) {
+    console.error(e); toast('Numbers nahi mil sake: ' + (e.code || e.message), 'error');
+  }
+  btn.disabled = false;
+}
+async function loadClaimHistory() {
+  try {
+    const s = await getDocs(query(collection(db, 'users', me.uid, 'numberClaims'), orderBy('claimedAt', 'desc'), limit(10)));
+    const box = $('claimHistory');
+    if (s.empty) { box.innerHTML = '<div class="empty">Abhi koi record nahi</div>'; return; }
+    box.innerHTML = s.docs.map(d => {
+      const c = d.data();
+      return '<div class="list-item"><div class="li-top"><b>' + (c.count || 0) + ' numbers</b><span class="li-sub">' + esc(fmtDateTime(c.claimedAt)) + '</span></div>' +
+        '<div class="row gap-8 mt-8"><button class="btn btn-soft btn-sm" data-copy="' + d.id + '" type="button">Copy</button><button class="btn btn-soft btn-sm" data-use="' + d.id + '" type="button">Campaign mein use</button></div></div>';
+    }).join('');
+    const map = {}; s.docs.forEach(d => map[d.id] = d.data().numbers || []);
+    box.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => copyText(map[b.dataset.copy].join('\n'))));
+    box.querySelectorAll('[data-use]').forEach(b => b.addEventListener('click', () => useNumbers(map[b.dataset.use])));
+  } catch (e) { console.warn(e); }
+}
+function copyText(t) {
+  if (navigator.clipboard) navigator.clipboard.writeText(t).then(() => toast('Copy ho gaya', 'success'), () => toast('Copy nahi hua', 'error'));
+  else toast('Copy support nahi hai', 'error');
+}
+function useNumbers(arr) {
+  if (!arr || !arr.length) return;
+  $('pasteInput').value = arr.join('\n');
+  showView('Campaign'); goToStep(1);
+  toast('Numbers paste ho gaye. Parse & Preview dabayein', 'success');
+}
+$('claimBtn').addEventListener('click', claimNumbers);
+$('copyClaimBtn').addEventListener('click', () => copyText(lastClaim.join('\n')));
+$('useClaimBtn').addEventListener('click', () => useNumbers(lastClaim));
+
+/* =====================================================================
+   PLANS + PURCHASE
+   ===================================================================== */
+function renderCurrentPlan() {
+  const box = $('currentPlanCard');
+  if (isPremium()) {
+    const p = profile.plan;
+    box.innerHTML =
+      '<div class="li-top"><div class="card-t">' + esc(p.name || 'Premium') + '</div><span class="badge badge-premium">ACTIVE</span></div>' +
+      '<div class="kv"><span>Khatam hoga</span><span>' + esc(fmtDate(p.expiresAt)) + ' (' + daysLeft() + ' din baaki)</span></div>' +
+      '<div class="kv"><span>Roz ke numbers</span><span>' + (p.numberLimit || 0) + '</span></div>' +
+      '<div class="kv"><span>Messages</span><span>Unlimited</span></div>' +
+      '<div class="kv"><span>Ads</span><span>Band</span></div>' +
+      (featList(p.features).length ? '<ul class="plan-feats">' + featList(p.features).map(f => '<li>' + esc(f) + '</li>').join('') + '</ul>' : '');
+  } else {
+    const expired = profile.plan && profile.plan.active && tsMs(profile.plan.expiresAt) <= Date.now();
+    box.innerHTML =
+      '<div class="li-top"><div class="card-t">Free plan</div><span class="badge badge-free">' + (expired ? 'PLAN KHATAM' : 'FREE') + '</span></div>' +
+      '<div class="kv"><span>Roz ke messages</span><span>' + settings.freeDailyMessages + ' (aaj ' + msgsLeft() + ' baaki)</span></div>' +
+      '<div class="kv"><span>Roz ke numbers</span><span>' + settings.freeNumbersPerDay + '</span></div>' +
+      '<div class="kv"><span>Ads</span><span>Dikhte hain</span></div>' +
+      '<div style="font-size:12.5px;color:var(--ink-500);margin-top:8px;">Premium lein: unlimited messages, zyada numbers aur koi ads nahi.</div>';
+  }
+}
+async function loadPlans() {
+  try {
+    const s = await getDocs(collection(db, 'plans'));
+    plansCache = s.docs.map(d => ({ id: d.id, ...d.data() })).filter(p => p.isActive !== false).sort((a, b) => (a.price || 0) - (b.price || 0));
+  } catch (e) { console.warn(e); plansCache = []; }
+  const box = $('plansList');
+  if (!plansCache.length) { box.innerHTML = '<div class="empty">Abhi koi plan available nahi</div>'; return; }
+  box.innerHTML = plansCache.map(p => {
+    const feats = featList(p.features);
+    return '<div class="plan-card"><div class="plan-top"><div><div class="plan-name">' + esc(p.name) + '</div><div class="plan-days">' + (p.validDays || 0) + ' din valid</div></div><div class="plan-price">Rs ' + esc(p.price) + '</div></div>' +
+      '<ul class="plan-feats"><li>Unlimited messages</li><li>Roz ' + (p.numberLimit || 0) + ' numbers</li><li>Koi ads nahi</li>' + feats.map(f => '<li>' + esc(f) + '</li>').join('') + '</ul>' +
+      '<button class="btn btn-primary btn-block" data-buy="' + p.id + '" type="button">Ye plan lein</button></div>';
+  }).join('');
+  box.querySelectorAll('[data-buy]').forEach(b => b.addEventListener('click', () => buyPlan(b.dataset.buy)));
+}
+async function loadMyRequests() {
+  try {
+    const s = await getDocs(query(collection(db, 'planRequests'), where('uid', '==', me.uid)));
+    myRequests = s.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => tsMs(b.requestedAt) - tsMs(a.requestedAt));
+  } catch (e) { console.warn(e); myRequests = []; }
+  const box = $('myRequests');
+  if (!myRequests.length) { box.innerHTML = '<div class="empty">Abhi koi request nahi</div>'; return; }
+  box.innerHTML = myRequests.map(r =>
+    '<div class="list-item"><div class="li-top"><b>' + esc(r.planName) + ' · Rs ' + esc(r.planPrice) + '</b><span class="badge badge-' + esc(r.status) + '">' + esc(String(r.status).toUpperCase()) + '</span></div>' +
+    '<div class="li-sub">' + esc(fmtDateTime(r.requestedAt)) + (r.adminNote ? ' · Admin: ' + esc(r.adminNote) : '') + '</div></div>').join('');
+}
+
+function compressImage(file, maxW = 1000, quality = 0.65) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      let w = img.width, h = img.height;
+      if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+      const c = document.createElement('canvas'); c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      let out = c.toDataURL('image/jpeg', quality);
+      if (out.length > 800000) out = c.toDataURL('image/jpeg', 0.45);
+      URL.revokeObjectURL(url);
+      out.length > 900000 ? reject(new Error('Screenshot bohat bari hai')) : resolve(out);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Image nahi khuli')); };
+    img.src = url;
+  });
+}
+
+async function buyPlan(planId) {
+  const plan = plansCache.find(p => p.id === planId);
+  if (!plan) return;
+  if (myRequests.some(r => r.status === 'pending')) { toast('Aapki ek request pehle se pending hai', 'warn'); return; }
+  let methods = [];
+  try {
+    const s = await getDocs(collection(db, 'paymentMethods'));
+    methods = s.docs.map(d => ({ id: d.id, ...d.data() })).filter(m => m.isActive !== false);
+  } catch (e) { console.warn(e); }
+  const mHtml = methods.length ? methods.map(m =>
+    '<div class="pay-method"><b>' + esc(m.name) + '</b><br>Account: <b>' + esc(m.accountNumber) + '</b><br>Title: ' + esc(m.accountTitle) +
+    (m.instructions ? '<br><span style="color:var(--ink-500);">' + esc(m.instructions) + '</span>' : '') + '</div>').join('')
+    : '<div class="notice notice-warn">Abhi koi payment method nahi hai. Admin se rabta karein.</div>';
+  openModal(
+    '<div class="modal-t">' + esc(plan.name) + ' — Rs ' + esc(plan.price) + '</div>' +
+    '<p class="modal-p">Neeche diye account par payment karein, phir payment ka screenshot upload karke submit karein. Admin approve karega to plan chalu ho jayega.</p>' +
+    '<div class="mt-12">' + mHtml + '</div>' +
+    '<div class="field mt-12"><label>Payment screenshot</label><input type="file" id="shotInput" accept="image/*"><img id="shotPrev" class="shot-prev hide" alt=""></div>' +
+    '<div id="shotErr" class="notice notice-error hide mt-8"></div>' +
+    '<div class="row gap-8 mt-16"><button class="btn btn-ghost grow" id="shotCancel" type="button">Cancel</button><button class="btn btn-primary grow" id="shotSubmit" type="button">Submit karein</button></div>');
+  let dataUrl = '';
+  $('shotCancel').addEventListener('click', closeModal);
+  $('shotInput').addEventListener('change', async e => {
+    const f = e.target.files[0]; $('shotErr').classList.add('hide');
+    if (!f) return;
+    try { dataUrl = await compressImage(f); $('shotPrev').src = dataUrl; $('shotPrev').classList.remove('hide'); }
+    catch (err) { dataUrl = ''; $('shotErr').textContent = err.message; $('shotErr').classList.remove('hide'); }
+  });
+  $('shotSubmit').addEventListener('click', async () => {
+    if (!dataUrl) { $('shotErr').textContent = 'Pehle payment ka screenshot select karein.'; $('shotErr').classList.remove('hide'); return; }
+    $('shotSubmit').disabled = true;
+    try {
+      await addDoc(collection(db, 'planRequests'), {
+        uid: me.uid, userEmail: me.email || '', username: profile.username || '',
+        planId: plan.id, planName: plan.name, planPrice: plan.price, validDays: plan.validDays, numberLimit: plan.numberLimit || 0,
+        features: featList(plan.features), screenshot: dataUrl,
+        status: 'pending', requestedAt: serverTimestamp(), reviewedAt: null, reviewedBy: '', adminNote: ''
+      });
+      closeModal(); toast('Request bhej di. Admin approve karega', 'success'); loadMyRequests();
+    } catch (e) { console.error(e); $('shotErr').textContent = 'Submit nahi hua: ' + (e.code || e.message); $('shotErr').classList.remove('hide'); $('shotSubmit').disabled = false; }
+  });
+}
+
+/* =====================================================================
+   ACCOUNT
+   ===================================================================== */
+function renderAccount() {
+  const u = profile.usage || {}, t = usageToday();
+  $('accName').textContent = profile.username || '—';
+  $('accEmail').textContent = profile.email || me.email || '';
+  $('accInfo').innerHTML =
+    '<div class="kv"><span>Plan</span><span>' + (isPremium() ? '⭐ ' + esc(profile.plan.name) + ' (' + daysLeft() + ' din)' : 'Free') + '</span></div>' +
+    '<div class="kv"><span>Aaj ke messages</span><span>' + t.msgs + (isPremium() ? '' : ' / ' + settings.freeDailyMessages) + '</span></div>' +
+    '<div class="kv"><span>Kul messages</span><span>' + (u.totalMessagesSent || 0) + '</span></div>' +
+    '<div class="kv"><span>Kul numbers import</span><span>' + (u.totalNumbersImported || 0) + '</span></div>' +
+    '<div class="kv"><span>Account banaya</span><span>' + esc(fmtDate(profile.createdAt)) + '</span></div>';
+}
+async function loadMyLogs() {
+  try {
+    const s = await getDocs(query(collection(db, 'campaignLogs'), where('uid', '==', me.uid)));
+    const logs = s.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => tsMs(b.startedAt) - tsMs(a.startedAt)).slice(0, 15);
+    const box = $('myLogs');
+    if (!logs.length) { box.innerHTML = '<div class="empty">Abhi koi campaign nahi</div>'; return; }
+    box.innerHTML = logs.map(l =>
+      '<div class="list-item"><div class="li-top"><b>' + (l.sent || 0) + ' / ' + (l.totalContacts || 0) + ' sent</b><span class="li-sub">' + esc(fmtDateTime(l.startedAt)) + '</span></div>' +
+      '<div class="li-sub">' + esc(String(l.message || '').slice(0, 90)) + '</div></div>').join('');
+  } catch (e) { console.warn(e); }
+}
+async function doLogout() {
+  try { await signOut(auth); } catch (_) {}
+  location.reload();
+}
+$('logoutBtn').addEventListener('click', doLogout);
+
+/* =====================================================================
+   CAMPAIGN (same flow as before + limits + logs)
+   ===================================================================== */
+const S = {
+  previewItems: [], contacts: [], duplicates: 0, message: '',
+  campaignActive: false, openContactId: null, currentStep: 1,
+  logId: null, logReady: null, logDone: false
+};
+
+function goToStep(n) {
+  S.currentStep = n;
+  ['page1', 'page2', 'page3'].forEach((id, i) => {
+    $(id).classList.toggle('hide', i + 1 !== n);
+    if (i + 1 === n) { $(id).classList.remove('anim-rise'); void $(id).offsetWidth; $(id).classList.add('anim-rise'); }
+  });
+  document.querySelectorAll('.step-chip').forEach(chip => {
+    const step = +chip.dataset.step;
+    chip.classList.toggle('is-active', step === n);
+    chip.classList.toggle('is-done', step < n);
+  });
+  document.querySelectorAll('.step-line').forEach(line => line.classList.toggle('is-done', +line.dataset.line < n));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function normalizePhone(raw) {
+  if (!raw) return { valid: false, normalized: '', reason: 'Empty' };
+  const c = String(raw).trim().replace(/[\s\-().]/g, '');
+  if (!c) return { valid: false, normalized: '', reason: 'Empty after cleanup' };
+  if (/^03\d{9}$/.test(c)) return { valid: true, normalized: '+92' + c.slice(1), reason: 'Local PK → intl' };
+  if (/^\+92\d{10}$/.test(c)) return { valid: true, normalized: c, reason: 'International +92' };
+  if (/^92\d{10}$/.test(c)) return { valid: true, normalized: '+' + c, reason: '92 → +92' };
+  if (/^\+\d{10,15}$/.test(c)) return { valid: true, normalized: c, reason: 'International' };
+  return { valid: false, normalized: c, reason: 'Unrecognized format' };
+}
+function parseText(text) {
+  if (!text || !text.trim()) return [];
+  const parts = text.split(/[\n,;]+/).map(s => s.trim()).filter(Boolean);
+  const out = [];
+  for (const part of parts) {
+    if ((part.match(/\+/g) || []).length > 1) out.push(...part.split(/\s+/).filter(Boolean));
+    else if (part.includes(' ') && part.replace(/\s/g, '').length > 12) out.push(...part.split(/\s+/).filter(Boolean));
+    else out.push(part);
+  }
+  return out;
+}
+
+let activeTab = 'paste';
+document.querySelectorAll('#importTabs .seg-btn').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('#importTabs .seg-btn').forEach(b => b.classList.remove('is-active'));
+  btn.classList.add('is-active');
+  activeTab = btn.dataset.method;
+  $('pasteArea').classList.toggle('hide', activeTab !== 'paste');
+  $('fileArea').classList.toggle('hide', activeTab === 'paste');
+  $('fileInput').accept = activeTab === 'csv' ? '.csv' : '.txt';
+  $('previewArea').classList.add('hide');
+  $('importError').classList.add('hide');
+}));
+
+const dz = $('dropzone');
+dz.addEventListener('click', () => $('fileInput').click());
+['dragenter', 'dragover'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('is-over'); }));
+['dragleave', 'drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('is-over'); }));
+dz.addEventListener('drop', e => {
+  e.preventDefault();
+  if (e.dataTransfer.files.length) { $('fileInput').files = e.dataTransfer.files; showFileName(e.dataTransfer.files[0].name); }
+});
+$('fileInput').addEventListener('change', e => { if (e.target.files.length) showFileName(e.target.files[0].name); });
+function showFileName(name) { const el = $('dzFile'); el.textContent = '📎 ' + name; el.classList.remove('hide'); }
+
+$('parseBtn').addEventListener('click', () => {
+  const finish = text => {
+    const raw = parseText(text);
+    if (!raw.length) {
+      $('importError').innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>No numbers detected in the input.</span>';
+      $('importError').classList.remove('hide'); $('previewArea').classList.add('hide');
+      toast('No numbers found', 'error'); return;
+    }
+    $('importError').classList.add('hide');
+    buildPreview(raw);
+  };
+  if (activeTab === 'paste') {
+    const t = $('pasteInput').value;
+    if (!t.trim()) { toast('Please paste some numbers first', 'warn'); return; }
+    finish(t);
+  } else {
+    const f = $('fileInput').files[0];
+    if (!f) { toast('Please select a file first', 'warn'); return; }
+    const reader = new FileReader();
+    reader.onload = ev => finish(ev.target.result);
+    reader.readAsText(f);
+  }
+});
+
+function buildPreview(rawList) {
+  const seen = new Set(), items = []; let dup = 0;
+  for (const raw of rawList) {
+    if (!raw.trim()) continue;
+    const norm = normalizePhone(raw);
+    const key = norm.valid ? norm.normalized : raw.trim();
+    if (seen.has(key)) { dup++; continue; }
+    seen.add(key);
+    items.push({ original: raw.trim(), normalized: norm.normalized, valid: norm.valid, reason: norm.reason });
+  }
+  S.previewItems = items; S.duplicates = dup;
+  const validCount = items.filter(i => i.valid).length, invalidCount = items.length - validCount;
+  $('previewSummary').innerHTML =
+    '<svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' +
+    '<span><strong>' + items.length + '</strong> unique · <strong style="color:#0d7247">' + validCount + ' valid</strong> · <strong style="color:#a3212d">' + invalidCount + ' invalid</strong> · <strong style="color:#96590a">' + dup + ' duplicate' + (dup !== 1 ? 's' : '') + ' skipped</strong></span>';
+  $('previewList').innerHTML = items.map(it =>
+    '<div class="row-item"><span class="row-num">' + esc(it.normalized || it.original) + '</span><span class="pill pill-' + (it.valid ? 'valid' : 'invalid') + '">' + (it.valid ? 'Valid' : 'Invalid') + '</span></div>').join('');
+  $('previewArea').classList.remove('hide');
+  toast(items.length + ' numbers parsed', 'success');
+}
+
+$('generateBtn').addEventListener('click', () => {
+  if (!S.previewItems.length) return;
+  const validCount = S.previewItems.filter(i => i.valid).length;
+  if (validCount === 0) { toast('No valid numbers to proceed with', 'error'); return; }
+  S.contacts = S.previewItems.map((it, i) => ({
+    id: 'c_' + i + '_' + Date.now().toString(36),
+    original: it.original, normalized: it.normalized, valid: it.valid, reason: it.reason,
+    status: it.valid ? 'pending' : 'invalid', limited: false
+  }));
+  bumpUsage({ imported: validCount });
+  renderMessageStats(); renderLimitNotice();
+  goToStep(2);
+  toast('Contacts imported successfully', 'success');
+});
+
+function renderMessageStats() {
+  const total = S.contacts.length, valid = S.contacts.filter(c => c.valid).length;
+  $('statTotal').textContent = total; $('statValid').textContent = valid;
+  $('statDup').textContent = S.duplicates; $('statInvalid').textContent = total - valid;
+}
+
+/* free-limit notice on step 2 */
+function ensureLimitNotice() {
+  if ($('limitNotice')) return;
+  const n = document.createElement('div');
+  n.id = 'limitNotice'; n.className = 'notice notice-info mt-12';
+  const target = $('messageEditor');
+  target.parentNode.insertBefore(n, target);
+}
+function renderLimitNotice() {
+  ensureLimitNotice();
+  const n = $('limitNotice');
+  if (isPremium()) { n.className = 'notice notice-success'; n.innerHTML = '<span>⭐ Premium: unlimited messages, koi ads nahi.</span>'; }
+  else {
+    const left = msgsLeft();
+    n.className = 'notice ' + (left > 0 ? 'notice-info' : 'notice-warn');
+    n.innerHTML = '<span>Free plan: aaj <strong>' + left + '</strong> messages baaki (roz ' + settings.freeDailyMessages + '). Unlimited ke liye Plans mein premium lein.</span>';
+  }
+}
+
+$('messageEditor').addEventListener('input', e => { S.message = e.target.value; $('charCount').textContent = S.message.length + ' characters'; });
+$('previewMsgBtn').addEventListener('click', () => {
+  if (!S.message.trim()) { toast('Message is empty', 'warn'); return; }
+  $('waBubbleTxt').textContent = S.message; $('msgPreviewWrap').classList.remove('hide'); toast('Preview shown', 'success');
+});
+$('consentCheck').addEventListener('change', e => {
+  $('consentRow').classList.toggle('is-checked', e.target.checked);
+  if (e.target.checked) $('consentErr').classList.add('hide');
+});
+$('backToPage1').addEventListener('click', () => goToStep(1));
+
+function upgradeModal() {
+  openModal('<div class="modal-t">Free limit poori ho gayi</div><p class="modal-p">Aaj ke ' + settings.freeDailyMessages + ' free messages use ho chuke hain. Kal dobara try karein, ya premium plan lekar unlimited messages bhejein aur ads hatayein.</p>' +
+    '<div class="row gap-8 mt-16"><button class="btn btn-ghost grow" id="upClose" type="button">Baad mein</button><button class="btn btn-primary grow" id="upGo" type="button">Plans dekhein</button></div>');
+  $('upClose').addEventListener('click', closeModal);
+  $('upGo').addEventListener('click', () => { closeModal(); showView('Plans'); });
+}
+
+$('startCampaignBtn').addEventListener('click', async () => {
+  if (!S.message.trim()) { toast('Please write a message first', 'error'); return; }
+  if (!$('consentCheck').checked) { $('consentErr').classList.remove('hide'); toast('Please confirm consent', 'error'); return; }
+  $('consentErr').classList.add('hide');
+  const valid = S.contacts.filter(c => c.valid);
+  if (!valid.length) { toast('No valid contacts available', 'error'); return; }
+
+  // free-limit
+  const left = msgsLeft();
+  if (left <= 0) { upgradeModal(); return; }
+  let limitedCount = 0;
+  valid.forEach((c, i) => { c.limited = (left !== Infinity && i >= left); if (c.limited) { c.status = 'limited'; limitedCount++; } else c.status = 'pending'; });
+  if (limitedCount) toast('Free limit: sirf pehle ' + left + ' contacts ko message ja sakega', 'warn');
+
+  S.campaignActive = true; S.openContactId = null; S.logDone = false; S.logId = null;
+  goToStep(3); renderSendPage();
+  if (!limitedCount) toast('Campaign started 🚀', 'success');
+  createLog();
+});
+
+/* ---------- campaign logs (Firestore) ---------- */
+function getQueue() { return S.contacts.filter(c => c.valid && !c.limited); }
+function getNext() { const q = getQueue(); for (let i = 0; i < q.length; i++) if (q[i].status === 'pending') return q[i]; return null; }
+
+function createLog() {
+  const q = getQueue();
+  S.logReady = addDoc(collection(db, 'campaignLogs'), {
+    uid: me.uid, userEmail: me.email || '', username: profile.username || '',
+    message: S.message, totalContacts: q.length, sent: 0, skipped: 0, failed: 0,
+    contacts: q.map(c => ({ phone: c.normalized, status: c.status })),
+    status: 'running', startedAt: serverTimestamp(), completedAt: null
+  }).then(r => { S.logId = r.id; return r.id; }).catch(e => { console.warn('log create failed', e); return null; });
+}
+let logTimer = null;
+function logSync(final) {
+  clearTimeout(logTimer);
+  logTimer = setTimeout(async () => {
+    const id = S.logId || (S.logReady && await S.logReady);
+    if (!id) return;
+    const q = getQueue();
+    const data = {
+      sent: q.filter(c => c.status === 'sent').length,
+      skipped: q.filter(c => c.status === 'skipped').length,
+      failed: q.filter(c => c.status === 'failed').length,
+      contacts: q.map(c => ({ phone: c.normalized, status: c.status }))
+    };
+    if (final) { data.status = 'completed'; data.completedAt = serverTimestamp(); }
+    try { await updateDoc(doc(db, 'campaignLogs', id), data); } catch (e) { console.warn('log sync failed', e); }
+  }, final ? 100 : 700);
+}
+
+/* ---------- send page ---------- */
+function renderSendPage() {
+  if (!S.campaignActive) return;
+  const q = getQueue();
+  const done = q.filter(c => ['sent', 'skipped', 'failed'].includes(c.status));
+  const pending = q.filter(c => c.status === 'pending');
+  const opened = q.filter(c => c.status === 'chat_opened');
+  const sent = q.filter(c => c.status === 'sent');
+  const skipped = q.filter(c => c.status === 'skipped');
+  const total = q.length, pct = total ? Math.round((done.length / total) * 100) : 0;
+
+  $('progressFill').style.width = pct + '%';
+  $('progressText').textContent = done.length + ' / ' + total;
+  $('progSent').textContent = sent.length; $('progPending').textContent = pending.length;
+  $('progOpened').textContent = opened.length; $('progSkipped').textContent = skipped.length;
+  $('sendBubbleTxt').textContent = S.message || 'No message written';
+
+  const next = getNext();
+  const openedContact = opened.find(c => c.id === S.openContactId);
+  const mainBtn = $('mainActionBtn'), markRow = $('markRow'), doneBlock = $('campaignDone');
+  markRow.classList.add('hide'); doneBlock.classList.add('hide');
+  mainBtn.disabled = false; mainBtn.classList.add('pulse'); mainBtn.style.opacity = '1';
+
+  if (!next && !openedContact) {
+    $('heroEyebrow').textContent = 'Campaign Complete'; $('heroNum').textContent = '🎉';
+    $('heroSub').textContent = 'All contacts processed'; $('heroTime').textContent = 'Done';
+    $('heroCount').textContent = q.length + ' of ' + q.length; $('currentRecipient').textContent = 'No more recipients';
+    mainBtn.disabled = true; mainBtn.classList.remove('pulse'); mainBtn.style.opacity = '.4';
+    doneBlock.classList.remove('hide');
+    if (!S.logDone) { S.logDone = true; logSync(true); }
+    if (window.__loadPopunder && !isPremium()) setTimeout(window.__loadPopunder, 1500);
+    renderFullList(); return;
+  }
+  if (openedContact) {
+    const idx = q.findIndex(c => c.id === openedContact.id);
+    $('heroEyebrow').textContent = 'Chat Opened — Mark Result'; $('heroNum').textContent = openedContact.normalized;
+    $('heroSub').textContent = 'Did you send the message? Mark below.'; $('heroTime').textContent = 'In progress';
+    $('heroCount').textContent = (idx + 1) + ' of ' + q.length; $('currentRecipient').textContent = openedContact.normalized;
+    mainBtn.disabled = true; mainBtn.classList.remove('pulse'); mainBtn.style.opacity = '.55';
+    $('mainActionLabel').textContent = 'Chat Opened — Mark Result Below';
+    markRow.classList.remove('hide');
+  } else if (next) {
+    const idx = q.findIndex(c => c.id === next.id);
+    $('heroEyebrow').textContent = 'Next Recipient'; $('heroNum').textContent = next.normalized;
+    $('heroSub').textContent = 'Tap Open WhatsApp to begin'; $('heroTime').textContent = 'Ready';
+    $('heroCount').textContent = (idx + 1) + ' of ' + q.length; $('currentRecipient').textContent = next.normalized;
+    $('mainActionLabel').textContent = 'Open WhatsApp Chat';
+  }
+  renderFullList();
+}
+function renderFullList() {
+  $('fullContactList').innerHTML = S.contacts.map(c =>
+    '<div class="row-item"><span class="row-num">' + esc(c.normalized || c.original) + '</span>' +
+    '<span class="pill pill-' + (c.valid ? 'valid' : 'invalid') + '">' + (c.valid ? 'Valid' : 'Invalid') + '</span>' +
+    '<span class="pill pill-' + c.status + '">' + c.status.replace('_', ' ') + '</span></div>').join('');
+}
+
+$('mainActionBtn').addEventListener('click', () => {
+  if (S.openContactId) { toast('Please mark the current result first', 'warn'); return; }
+  const next = getNext();
+  if (!next) { toast('No pending contacts', 'warn'); return; }
+  if (!isPremium() && msgsLeft() <= 0) { upgradeModal(); return; }
+
+  const phone = next.normalized.replace('+', '');
+  const url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(S.message);
+  next.status = 'chat_opened'; S.openContactId = next.id;
+  window.open(url, '_blank');
+  bumpUsage({ msgs: 1 });
+  renderSendPage(); logSync();
+  toast('WhatsApp opened. Send the message, then mark below.', 'success');
+});
+function mark(status, msg, type, sentInc) {
+  const c = S.contacts.find(x => x.id === S.openContactId);
+  if (!c) return;
+  c.status = status; S.openContactId = null;
+  if (sentInc) bumpUsage({ sent: 1 });
+  renderSendPage(); logSync(); toast(msg, type);
+}
+$('markSentBtn').addEventListener('click', () => mark('sent', 'Marked as Sent ✅ — Next contact ready', 'success', true));
+$('markSkipBtn').addEventListener('click', () => mark('skipped', 'Skipped — Next contact ready', 'warn', false));
+$('markFailBtn').addEventListener('click', () => mark('failed', 'Marked as Failed — Next contact ready', 'error', false));
+
+$('resetAllBtn').addEventListener('click', () => {
+  openModal('<div class="modal-t">Start a New Campaign?</div><p class="modal-p">This will clear all contacts, the message, and reset the campaign. This cannot be undone.</p>' +
+    '<div class="row gap-8 mt-16"><button class="btn btn-ghost grow" id="modalCancel" type="button">Cancel</button><button class="btn btn-danger grow" id="modalConfirm" type="button">Reset</button></div>');
+  $('modalCancel').addEventListener('click', closeModal);
+  $('modalConfirm').addEventListener('click', () => { closeModal(); resetAll(); });
+});
+function resetAll() {
+  if (S.campaignActive && !S.logDone) { S.logDone = true; logSync(true); }
+  S.previewItems = []; S.contacts = []; S.duplicates = 0; S.message = ''; S.campaignActive = false; S.openContactId = null; S.logId = null; S.logReady = null;
+  $('pasteInput').value = ''; $('messageEditor').value = ''; $('charCount').textContent = '0 characters';
+  $('fileInput').value = ''; $('dzFile').classList.add('hide'); $('previewArea').classList.add('hide');
+  $('consentCheck').checked = false; $('consentRow').classList.remove('is-checked');
+  $('msgPreviewWrap').classList.add('hide'); $('campaignDone').classList.add('hide'); $('markRow').classList.add('hide'); $('importError').classList.add('hide');
+  goToStep(1); toast('Ready for a new campaign', 'success');
+}
+$('clearLogBtn').addEventListener('click', () => {
+  $('fullContactList').innerHTML = '<div style="padding:20px;font-size:13px;color:var(--ink-400);text-align:center;">No contacts</div>';
+});
+
+/* =====================================================================
+   BOOT
+   ===================================================================== */
+$('loginBtn').addEventListener('click', doLogin);
+$('regBtn').addEventListener('click', doRegister);
+$('googleBtn').addEventListener('click', doGoogle);
+$('forgotBtn').addEventListener('click', doForgot);
+['loginEmail', 'loginPass'].forEach(id => $(id).addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); }));
+['regEmail', 'regUser', 'regPass', 'regPass2'].forEach(id => $(id).addEventListener('keydown', e => { if (e.key === 'Enter') doRegister(); }));
+
+if (!configured) {
+  $('bootView').classList.add('hide');
+  $('authView').classList.remove('hide');
+  $('setupNotice').classList.remove('hide');
+} else {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+  onAuthStateChanged(auth, async user => {
+    if (!user) {
+      me = null; profile = null; appShown = false;
+      if (unsubProfile) { unsubProfile(); unsubProfile = null; }
+      $('bootView').classList.add('hide'); $('appView').classList.add('hide'); $('authView').classList.remove('hide');
+      return;
+    }
+    me = user;
+    try { await ensureUserDoc(user); } catch (e) { console.error(e); authMsg('err', 'Account setup nahi ho saka: ' + (e.code || e.message)); }
+    if (unsubProfile) unsubProfile();
+    unsubProfile = onSnapshot(doc(db, 'users', user.uid), snap => {
+      if (!snap.exists()) return;
+      profile = snap.data();
+      onProfile();
+    }, err => { console.error(err); authMsg('err', 'Data load nahi hua: ' + (err.code || err.message)); $('bootView').classList.add('hide'); $('authView').classList.remove('hide'); });
+  });
+}
+
 </script>
 
 </body>
